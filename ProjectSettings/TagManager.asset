@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< .merge_file_sXs37C
   - Ground
+=======
+  - Obstacles
+  - Tower
+>>>>>>> .merge_file_YXDMuw
   layers:
   - Default
   - TransparentFX

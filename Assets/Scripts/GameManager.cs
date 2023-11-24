@@ -34,4 +34,14 @@ public class GameManager : MonoBehaviour
             player.transform.LookAt(new Vector3(pointToLook.x, player.transform.position.y, pointToLook.z));
         }
     }
+
+    // The monster will spawn randomly in the area (-_x ~ _x, -_z ~ -z)
+    void Respawn(float _x, float _z)
+    {
+        float x = Random.Range(-_x, _x);
+        float z = Random.Range(-_z, _z);
+
+        // Monster is the prefab to be instantiated
+        // Instantiate(Monster, new Vector3(x, 0, z), Quaternion.identity);
+    }
 }
