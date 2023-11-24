@@ -3,22 +3,24 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Player player;
+    public Monster monster;
     public Camera mainCamera;
 
     void Start()
     {
-        player.SetStatus();
+        ;
     }
 
     void Update()
     {
-        player.Move();
         TrackMouseRotation();
 
         if (Input.GetMouseButtonDown(0))    // left-click
         {
             player.Attack();
         }
+
+        // Respawn(10f, 10f);
     }
 
     void TrackMouseRotation()
@@ -42,6 +44,6 @@ public class GameManager : MonoBehaviour
         float z = Random.Range(-_z, _z);
 
         // Monster is the prefab to be instantiated
-        // Instantiate(Monster, new Vector3(x, 0, z), Quaternion.identity);
+        Instantiate(monster, new Vector3(x, 0, z), Quaternion.identity);
     }
 }
