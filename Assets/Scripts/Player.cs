@@ -7,7 +7,7 @@ public class Player : Entity
 
     void Start()
     {
-        this.SetStatus(100f, 10f, 10f);
+        this.SetStatus(100f, 10f, 10f, 0.2f);
     }
 
     void Update()
@@ -35,10 +35,5 @@ public class Player : Entity
         fireballTemplate.transform.forward = this.transform.forward;
         fireballTemplate.damage = this.damage;
         Instantiate(fireballTemplate);
-    }
-
-    public override void TakeDamage(float damage)
-    {
-        hp -= damage;
     }
 }

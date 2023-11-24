@@ -7,7 +7,7 @@ public class Monster : Entity
     void Start()
     {
         tower = FindObjectOfType<Tower>();
-        this.SetStatus(20f, 10f, 10f);
+        this.SetStatus(20f, 10f, 10f, 0.5f);
     }
 
     void Update()
@@ -15,7 +15,7 @@ public class Monster : Entity
         this.Move();
 
         // Check if the monster is alive
-        if (hp < 0)
+        if (hp <= 0)
         {
             Destroy(gameObject);
         }
@@ -25,7 +25,7 @@ public class Monster : Entity
     public override void Move()
     {
         // The monster moves toward the origin at a constant speed
-        Vector3 direction = tower.transform.position - this.transform.position ;
+        Vector3 direction = tower.transform.position - this.transform.position;
         direction.y = 0f;
         this.transform.forward = direction;
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -36,25 +36,21 @@ public class Monster : Entity
         ;
     }
 
-    public override void TakeDamage(float damage)
-    {
-        hp -= damage;
-    }
-
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Obstacles") || other.gameObject.CompareTag("Tower"))
+        if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Tower"))
         {
             speed = 0f;
 
             // Deals damage to the obstacles in its way
+            this.Attack();
             other.gameObject.GetComponent<Entity>().TakeDamage(damage);
         }
     }
 
     void OnCollisionExit(Collision other)
     {
-        if (other.gameObject.CompareTag("Obstacles") || other.gameObject.CompareTag("Tower"))
+        if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Tower"))
         {
             speed = 10f;
         }

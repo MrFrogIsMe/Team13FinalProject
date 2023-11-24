@@ -16,11 +16,14 @@ public class FireBall : MonoBehaviour
         this.transform.position += this.transform.forward * speed * Time.deltaTime;
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
         Destroy(this.gameObject);
         print($"hit: {other.tag}");
-        if (other.CompareTag("Enemy")) {
+        if (other.CompareTag("Enemy"))
+        {
             other.GetComponent<Entity>().TakeDamage(damage);
+            print($"{other.name}.hp = {other.GetComponent<Entity>().hp}");
         }
     }
 }

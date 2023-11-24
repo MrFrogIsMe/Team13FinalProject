@@ -1,10 +1,8 @@
-using UnityEngine;
-
 public class Tower : Entity
 {
     void Start()
     {
-        this.SetStatus(200, 0, 0);
+        this.SetStatus(200f, 0f, 0f, 0f);
     }
 
     void Update()
@@ -15,6 +13,4 @@ public class Tower : Entity
     public override void Move() { }
 
     public override void Attack() { }
-
-    public override void TakeDamage(float damage) { }
 }
