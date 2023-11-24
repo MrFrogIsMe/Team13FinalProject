@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    public GameObject fireballSpawnpoint;
+    public FireBall fireballTemplate;
+
     public override void Move()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
@@ -17,7 +20,10 @@ public class Player : Entity
 
     public override void Attack()
     {
-        ;
+        fireballTemplate.transform.position = fireballSpawnpoint.transform.position;
+        fireballTemplate.transform.forward = this.transform.forward;
+        fireballTemplate.damage = this.damage;
+        Instantiate(fireballTemplate);
     }
 
     public override void TakeDamage(float damage)

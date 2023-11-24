@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     {
         player.Move();
         TrackMouseRotation();
+
+        if (Input.GetMouseButtonDown(0))    // left-click
+        {
+            player.Attack();
+        }
     }
 
     void TrackMouseRotation()
