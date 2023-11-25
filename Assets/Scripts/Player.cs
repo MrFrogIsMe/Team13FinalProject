@@ -7,12 +7,25 @@ public class Player : Entity
 
     void Start()
     {
-        this.SetStatus(100, 10, 10f, 0.2f);
+        this.Setup();
+        maxHp = 100;
+        hp = maxHp;
+        hpBar.SetMaxHealth(maxHp);
+        damage = 10;
+        attackCD = 0.2f;
+        maxSpeed = 10f;
+        force = 200f;
+        drag = 2f;
     }
 
     void Update()
     {
         this.Move();
+
+        if (hp <= 0)
+        {
+            // game over
+        }
     }
 
     public override void Move()
@@ -22,10 +35,13 @@ public class Player : Entity
 
         Vector3 direction = new Vector3(moveHorizontal, 0f, moveVertical);
 
-        this.transform.position += direction.normalized * speed * Time.deltaTime;
-
         // Move by adding force
-        // GetComponent<Rigidbody>().AddForce(movement * speed);
+        // use sqrMagnitude to increace performance
+        rb.AddForce(direction.normalized * force);
+        if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * maxSpeed;
+        }
     }
 
     public override void Attack()

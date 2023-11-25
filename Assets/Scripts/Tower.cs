@@ -2,12 +2,18 @@ public class Tower : Entity
 {
     void Start()
     {
-        this.SetStatus(200, 0, 0f, 0f);
+        this.Setup();
+        maxHp = 200;
+        hp = maxHp;
+        hpBar.SetMaxHealth(maxHp);
     }
 
     void Update()
     {
-        ;
+        if (hp <= 0)
+        {
+            // game over
+        }
     }
 
     public override void Move() { }

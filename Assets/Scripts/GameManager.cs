@@ -44,6 +44,6 @@ public class GameManager : MonoBehaviour
         float z = Random.Range(-_z, _z);
 
         // Monster is the prefab to be instantiated
-        Instantiate(monster, new Vector3(x, 0, z), Quaternion.identity);
+        Instantiate(monster, new Vector3(x, 1, z), Quaternion.identity);
     }
 }

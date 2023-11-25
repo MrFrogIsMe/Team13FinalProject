@@ -7,7 +7,15 @@ public class Monster : Entity
     void Start()
     {
         tower = FindObjectOfType<Tower>();
-        this.SetStatus(20, 10, 10f, 0.5f);
+        this.Setup();
+        maxHp = 20;
+        hp = maxHp;
+        hpBar.SetMaxHealth(maxHp);
+        damage = 5;
+        attackCD = 0.5f;
+        maxSpeed = 5f;
+        force = 200f;
+        drag = 2f;
     }
 
     void Update()
@@ -28,7 +36,11 @@ public class Monster : Entity
         Vector3 direction = tower.transform.position - this.transform.position;
         direction.y = 0f;
         this.transform.forward = direction;
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        rb.AddForce(direction.normalized * force);
+        if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * maxSpeed;
+        }
     }
 
     public override void Attack()
@@ -40,7 +52,7 @@ public class Monster : Entity
     {
         if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Tower"))
         {
-            speed = 0f;
+            maxSpeed = 0f;
 
             // Deals damage to the obstacles in its way
             this.Attack();
@@ -52,7 +64,7 @@ public class Monster : Entity
     {
         if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Tower"))
         {
-            speed = 10f;
+            maxSpeed = 10f;
         }
     }
 }
