@@ -2,7 +2,7 @@ public class Tower : Entity
 {
     void Start()
     {
-        this.SetStatus(200f, 0f, 0f, 0f);
+        this.SetStatus(200, 0, 0f, 0f);
     }
 
     void Update()

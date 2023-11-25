@@ -7,7 +7,7 @@ public class Monster : Entity
     void Start()
     {
         tower = FindObjectOfType<Tower>();
-        this.SetStatus(20f, 10f, 10f, 0.5f);
+        this.SetStatus(20, 10, 10f, 0.5f);
     }
 
     void Update()

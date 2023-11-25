@@ -2,22 +2,29 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-    public float hp;
-    public float damage;
+    public int hp;
+    public int maxHp;
+    public HealthBar hpBar;
+    public int damage;
     public float speed;
     public float attackCD;
 
     public abstract void Move();
     public abstract void Attack();
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
-        this.hp -= damage;
+        hp = hp - damage < 0 ? 0 : hp - damage;
+        hpBar.SetHealth(hp);
     }
 
-    public void SetStatus(float hp = 100f, float damage = 10f, float speed = 10f, float attackCD = 0.5f)
+    public void SetStatus(int maxHp = 100, int damage = 10, float speed = 10f, float attackCD = 0.5f)
     {
-        this.hp = hp;
+        this.maxHp = maxHp;
+        this.hp = maxHp;
+        hpBar = this.GetComponentInChildren<HealthBar>();
+        hpBar.SetMaxHealth(maxHp);
+
         this.damage = damage;
         this.speed = speed;
         this.attackCD = attackCD;

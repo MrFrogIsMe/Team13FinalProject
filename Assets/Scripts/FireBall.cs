@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour
 {
-    public float damage;
+    public int damage;
     float speed = 50f;
     Vector3 movement;
 

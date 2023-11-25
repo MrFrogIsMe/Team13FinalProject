@@ -7,7 +7,7 @@ public class Player : Entity
 
     void Start()
     {
-        this.SetStatus(100f, 10f, 10f, 0.2f);
+        this.SetStatus(100, 10, 10f, 0.2f);
     }
 
     void Update()
