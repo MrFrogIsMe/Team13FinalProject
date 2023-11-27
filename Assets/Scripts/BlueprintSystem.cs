@@ -8,7 +8,6 @@ public class BlueprintSystem : MonoBehaviour
 {
     [Header("Config")]
     [SerializeField] Transform playerT;
-    [SerializeField] Material previewMat;
     [SerializeField] private Slot slot;
     [SerializeField] private List<Buliding> buildings;
 
@@ -17,21 +16,32 @@ public class BlueprintSystem : MonoBehaviour
     [SerializeField] float slotPadding;
 
     [Header("State")]
+    [SerializeField] private bool hotBar = false;
     [SerializeField] Buliding _toBuild;
     [SerializeField] int selectedSlot;
     [SerializeField] private List<Slot> slots;
 
     [Header("HotbarAnimationUtil")]
-    public bool showHotBar = false;
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] private Vector2 appear;
     [SerializeField] private Vector2 disappear;
     [SerializeField] private float fade;
     [SerializeField] private float fadeDuration;
 
+    public bool IsHotBarShown() { return hotBar; }
+    public void ShowHotBar( bool show ) { hotBar = show; }
+    public void Build()
+    {
+        if (!_toBuild.cannotBuild)
+        {
+            Instantiate(buildings[selectedSlot], playerT.position + playerT.forward * 2, playerT.rotation)
+                .SetAsBuilding();  
+        }
+    }
+
     void Start()
     {
-        fade = showHotBar ? 0f : 1f;
+        fade = hotBar ? 0f : 1f;
         float slotWidth = slot.GetComponent<RectTransform>().rect.width;
         float width = buildings.Count * (slotWidth + slotPadding) - slotPadding;
 
@@ -57,15 +67,15 @@ public class BlueprintSystem : MonoBehaviour
         GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(appear, disappear, _curve.Evaluate(fade / fadeDuration));
 
         //for hotbar animation non-functional
-        if (!showHotBar && fade + Time.deltaTime > fadeDuration)
+        if (!hotBar && fade + Time.deltaTime > fadeDuration)
         {
             fade = fadeDuration;
         }
-        else if (showHotBar && fade - Time.deltaTime < 0)
+        else if (hotBar && fade - Time.deltaTime < 0)
         {
             fade = 0;
         }
-        else if (!showHotBar)
+        else if (!hotBar)
         {
             fade += Time.deltaTime;
         }
@@ -73,27 +83,10 @@ public class BlueprintSystem : MonoBehaviour
         {
             fade -= Time.deltaTime;
         }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (showHotBar)
-            {
-                showHotBar = false;
-            }
-            else
-            {
-                showHotBar = true;
-            }
-        }
         //for hotbar animation end
 
-        if (showHotBar)
+        if (hotBar)
         {
-
-            for (int i = 0; i < buildings.Count; i++)
-            {
-                slots[i].changeColor(i == selectedSlot ? activeColor : Color.white);
-            }
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0f && selectedSlot > 0)
             {
@@ -108,10 +101,15 @@ public class BlueprintSystem : MonoBehaviour
                     Destroy(_toBuild.gameObject);
             }
 
+            for (int i = 0; i < buildings.Count; i++)
+            {
+                slots[i].changeColor(i == selectedSlot ? activeColor : Color.white);
+            }
+
             if (!_toBuild)
             {
                 _toBuild = Instantiate(buildings[selectedSlot], playerT.position + playerT.forward * 2, playerT.rotation);
-                _toBuild.GetComponent<MeshRenderer>().material = previewMat;
+                _toBuild.SetAsBlueprint();
             }
             else
                 _toBuild.transform.position = playerT.position + playerT.forward * 2;

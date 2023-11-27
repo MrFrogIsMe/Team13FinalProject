@@ -700,19 +700,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerT: {fileID: 772666384}
-  previewMat: {fileID: 2100000, guid: a96072a9be5632544a91129d5db4e5f5, type: 2}
   slot: {fileID: 1811502045701390904, guid: 3ea76e357a288ec40b0eacc092390904, type: 3}
   buildings:
-  - {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
+  - {fileID: 4677138032014611782, guid: daeb1a3ebc7ba3947a08fc8733748176, type: 3}
   - {fileID: 2664105771193875236, guid: 270adba97be708345b5d029021c0e225, type: 3}
-  - {fileID: 2664105771193875236, guid: 270adba97be708345b5d029021c0e225, type: 3}
+  - {fileID: 4677138032014611782, guid: daeb1a3ebc7ba3947a08fc8733748176, type: 3}
   - {fileID: 2664105771193875236, guid: 270adba97be708345b5d029021c0e225, type: 3}
   activeColor: {r: 0.90588236, g: 0.4, b: 0.18039216, a: 1}
   slotPadding: 20
+  hotBar: 0
   _toBuild: {fileID: 0}
   selectedSlot: 0
   slots: []
-  showHotBar: 0
   _curve:
     serializedVersion: 2
     m_Curve:
@@ -953,6 +952,8 @@ MonoBehaviour:
   player: {fileID: 772666385}
   monster: {fileID: 1040388804}
   mainCamera: {fileID: 963194227}
+  blueprintSystem: {fileID: 760965376}
+  buildingMode: 0
 --- !u!4 &851323185
 Transform:
   m_ObjectHideFlags: 0

@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 1137219916949983328}
   - component: {fileID: 947284635968355027}
   - component: {fileID: 8855634356039085958}
+  - component: {fileID: 3701419548039697800}
   m_Layer: 0
-  m_Name: Buliding
+  m_Name: Buliding(Dont use it directly; use prefeb varient)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -118,3 +119,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fcf0d8ab5aa434c95754cec708b182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blueprintMat: {fileID: 2100000, guid: a96072a9be5632544a91129d5db4e5f5, type: 2}
+  blueprintMatErr: {fileID: 2100000, guid: ee4921544f70dd5458eab54ac422958c, type: 2}
+  meshRenderers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  cannotBuild: 0
+  isBlueprint: 0
+  buildingMat: {fileID: 0}
+--- !u!54 &3701419548039697800
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4236366763943269259}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0

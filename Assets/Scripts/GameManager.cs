@@ -5,10 +5,13 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Monster monster;
     public Camera mainCamera;
+    public BlueprintSystem blueprintSystem;
+    public bool buildingMode;
 
     void Start()
     {
-        ;
+        buildingMode = false;
+        blueprintSystem.ShowHotBar(buildingMode);
     }
 
     void Update()
@@ -17,7 +20,16 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))    // left-click
         {
-            player.Attack();
+            if (buildingMode)
+                blueprintSystem.Build();
+            else
+                player.Attack();
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            buildingMode = !buildingMode;
+            blueprintSystem.ShowHotBar(buildingMode);
         }
 
         // Respawn(10f, 10f);
