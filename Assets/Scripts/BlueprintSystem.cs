@@ -1,19 +1,27 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
 public class BlueprintSystem : MonoBehaviour
 {
-    [SerializeField] private List<Buliding> buildings;
-    [SerializeField] private List<Slot> slots;
-    [SerializeField] private Slot slot;
-    [SerializeField] int selectedSlot;
-    [SerializeField] Color activeColor;
-
+    [Header("Config")]
     [SerializeField] Transform playerT;
-    [SerializeField] Buliding _toBuild;
     [SerializeField] Material previewMat;
+    [SerializeField] private Slot slot;
+    [SerializeField] private List<Buliding> buildings;
 
+    [Header("HotbarVisual")]
+    [SerializeField] Color activeColor;
+    [SerializeField] float slotPadding;
+
+    [Header("State")]
+    [SerializeField] Buliding _toBuild;
+    [SerializeField] int selectedSlot;
+    [SerializeField] private List<Slot> slots;
+
+    [Header("HotbarAnimationUtil")]
     public bool showHotBar = false;
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] private Vector2 appear;
@@ -24,7 +32,8 @@ public class BlueprintSystem : MonoBehaviour
     void Start()
     {
         fade = showHotBar ? 0f : 1f;
-        int width = buildings.Count * 110 - 10;
+        float slotWidth = slot.GetComponent<RectTransform>().rect.width;
+        float width = buildings.Count * (slotWidth + slotPadding) - slotPadding;
 
         for (int i = 0; i < buildings.Count; i++)
         {
@@ -32,13 +41,21 @@ public class BlueprintSystem : MonoBehaviour
             NewObj._buliding = buildings[i];
             slots.Add(NewObj);
             NewObj.GetComponent<RectTransform>().SetParent(transform);
-            NewObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * 110 - width / 2 + 50, -183f);
+            NewObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * (slotWidth + slotPadding) - width / 2 + slotWidth/2, 0f);
 
         }
     }
 
     void Update()
     {
+        //update the UI to fit the window
+        float scale = Mathf.Min(Screen.height / 484f, Screen.width / 860f);
+        GetComponent<RectTransform>().localScale = new Vector2(scale , scale);
+
+        appear = new Vector2(0f, Screen.height / 484f * 70f);
+        disappear = new Vector2(0f, Screen.height / 484f * -50f);
+        GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(appear, disappear, _curve.Evaluate(fade / fadeDuration));
+
         //for hotbar animation non-functional
         if (!showHotBar && fade + Time.deltaTime > fadeDuration)
         {
@@ -56,8 +73,6 @@ public class BlueprintSystem : MonoBehaviour
         {
             fade -= Time.deltaTime;
         }
-
-        GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(appear, disappear, _curve.Evaluate(fade / fadeDuration));
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -100,7 +115,7 @@ public class BlueprintSystem : MonoBehaviour
             }
             else
                 _toBuild.transform.position = playerT.position + playerT.forward * 2;
-            _toBuild.transform.rotation = playerT.rotation;
+            _toBuild.transform.rotation = Quaternion.Euler(0f, playerT.transform.eulerAngles.y, 0f);
 
         }
         else

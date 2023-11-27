@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -682,9 +682,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1404302349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &760965376
@@ -699,18 +699,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b96d6d39f578ed44a9e15e6703738b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerT: {fileID: 772666384}
+  previewMat: {fileID: 2100000, guid: a96072a9be5632544a91129d5db4e5f5, type: 2}
+  slot: {fileID: 1811502045701390904, guid: 3ea76e357a288ec40b0eacc092390904, type: 3}
   buildings:
   - {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
   - {fileID: 2664105771193875236, guid: 270adba97be708345b5d029021c0e225, type: 3}
   - {fileID: 2664105771193875236, guid: 270adba97be708345b5d029021c0e225, type: 3}
   - {fileID: 2664105771193875236, guid: 270adba97be708345b5d029021c0e225, type: 3}
-  slots: []
-  slot: {fileID: 1811502045701390904, guid: 3ea76e357a288ec40b0eacc092390904, type: 3}
-  selectedSlot: 0
   activeColor: {r: 0.90588236, g: 0.4, b: 0.18039216, a: 1}
-  playerT: {fileID: 772666384}
+  slotPadding: 20
   _toBuild: {fileID: 0}
-  previewMat: {fileID: 2100000, guid: a96072a9be5632544a91129d5db4e5f5, type: 2}
+  selectedSlot: 0
+  slots: []
   showHotBar: 0
   _curve:
     serializedVersion: 2
@@ -754,8 +755,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  appear: {x: 0, y: 0}
-  disappear: {x: 0, y: -123}
+  appear: {x: 0, y: 70}
+  disappear: {x: 0, y: -50}
   fade: 0
   fadeDuration: 0.2
 --- !u!1 &772666379
