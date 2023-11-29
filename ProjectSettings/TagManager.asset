@@ -9,6 +9,8 @@ TagManager:
   - Obstacles
   - Enemy
   - Building
+  - FxTemporaire
+  - Resource
   layers:
   - Default
   - TransparentFX
