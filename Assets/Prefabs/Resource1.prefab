@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7974341429142030826}
   - component: {fileID: 4768058025227632299}
   m_Layer: 0
-  m_Name: Resource
+  m_Name: Resource1
   m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!114 &7974341429142030826
 MonoBehaviour:
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab771794a3168440e90b704cfffcae21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourceType: Resource1
   health: 3
 --- !u!114 &4768058025227632299
 MonoBehaviour:

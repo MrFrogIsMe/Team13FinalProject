@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 
-public class Resource : MonoBehaviour 
+public class Resource : MonoBehaviour
 {
+    public String resourceType = "undefined";
     public int health = 3;
     HealthBar healthBar;
 
-    void Start() 
+    void Start()
     {
         healthBar = GetComponentInChildren<HealthBar>();
         healthBar.SetMaxHealth(health);
@@ -13,7 +15,7 @@ public class Resource : MonoBehaviour
 
     void Update()
     {
-        if (health <= 0) 
+        if (health <= 0)
         {
             Destroy(this.gameObject);
         }

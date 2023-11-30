@@ -28,5 +28,5 @@ Material:
     - _OutlineWidth: 7
     - _ZTest: 8
     m_Colors:
-    - _OutlineColor: {r: 1, g: 0.5302032, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 0.067070514, b: 0, a: 1}
   m_BuildTextureStacks: []

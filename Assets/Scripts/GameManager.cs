@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public Camera mainCamera;
     public BlueprintSystem blueprintSystem;
     public bool buildingMode;
+    public CollectResourceSystem collectSystem;
+    public bool collectMode;
 
     void Start()
     {
@@ -22,6 +24,8 @@ public class GameManager : MonoBehaviour
         {
             if (buildingMode)
                 blueprintSystem.Build();
+            else if (collectSystem.Collectable())
+                collectSystem.Collect();
             else
                 player.Attack();
         }

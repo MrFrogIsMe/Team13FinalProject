@@ -1,7 +1,10 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Entity
 {
+    public Dictionary<String, int> resources;
     public GameObject fireballSpawnpoint;
     public FireBall fireballTemplate;
 
@@ -16,6 +19,9 @@ public class Player : Entity
         maxSpeed = 10f;
         force = 200f;
         drag = 2f;
+        resources = new Dictionary<String, int>();
+        resources.Add("Resource1", 0);
+        resources.Add("Resource2", 0);
     }
 
     void Update()

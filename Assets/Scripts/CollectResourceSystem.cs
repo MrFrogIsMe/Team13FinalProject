@@ -1,16 +1,21 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Text = TMPro.TextMeshProUGUI;
 
 public class CollectResourceSystem : MonoBehaviour
 {
     Player player;
     Transform highlight;
+    Outline outline;
     RaycastHit raycastHit;
+    public Text resourceCnt;
+
     public float maxDist = 2f;
 
     void Start()
     {
         player = FindObjectOfType<Player>();
+        UpdateResourceText();
     }
 
     void Update()
@@ -22,6 +27,7 @@ public class CollectResourceSystem : MonoBehaviour
             highlight = null;
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // !EventSystem... is for not clicking through UI
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
         {
             highlight = raycastHit.transform;
@@ -29,11 +35,12 @@ public class CollectResourceSystem : MonoBehaviour
             {
                 if (highlight.gameObject.GetComponent<Outline>() != null)
                 {
-                    highlight.gameObject.GetComponent<Outline>().enabled = true;
+                    outline = highlight.gameObject.GetComponent<Outline>();
+                    outline.enabled = true;
                 }
                 else
                 {
-                    Outline outline = highlight.gameObject.AddComponent<Outline>();
+                    outline = highlight.gameObject.AddComponent<Outline>();
                     outline.enabled = true;
                 }
             }
@@ -43,14 +50,44 @@ public class CollectResourceSystem : MonoBehaviour
             }
         }
 
-        if (highlight != null && Input.GetMouseButtonDown(0))
+        if (highlight != null)
         {
             float dist = Vector3.Distance(highlight.transform.position, player.transform.position);
-            if (dist <= maxDist)
+            if (dist < maxDist)
             {
-                highlight.GetComponent<Resource>().Collect();
-                print("Resource Collected!");
+                outline.OutlineColor = Color.green;
             }
+            else
+            {
+                outline.OutlineColor = Color.red;
+            }
+            outline.UpdateMaterialProperties();
+        }
+    }
+
+    public bool Collectable()
+    {
+        if (highlight == null)
+            return false;
+        float dist = Vector3.Distance(highlight.transform.position, player.transform.position);
+        return dist < maxDist;
+    }
+
+    public void Collect()
+    {
+        Resource resource = highlight.GetComponent<Resource>();
+        resource.Collect();
+        player.resources[resource.resourceType] += 1;
+
+        UpdateResourceText();
+    }
+
+    void UpdateResourceText()
+    {
+        resourceCnt.text = "";
+        foreach (var resource in player.resources)
+        {
+            resourceCnt.text += resource.Key + " x " + resource.Value.ToString() + "\n";
         }
     }
 }
