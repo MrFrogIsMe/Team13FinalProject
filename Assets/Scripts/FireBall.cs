@@ -19,11 +19,11 @@ public class FireBall : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Destroy(this.gameObject);
-        print($"hit: {other.tag}");
+        // print($"hit: {other.tag}");
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<Entity>().TakeDamage(damage);
-            print($"{other.name}.hp = {other.GetComponent<Entity>().hp}");
+            // print($"{other.name}.hp = {other.GetComponent<Entity>().hp}");
         }
     }
 }

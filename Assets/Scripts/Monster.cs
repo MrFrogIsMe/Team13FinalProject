@@ -10,7 +10,8 @@ public class Monster : Entity
         this.Setup();
         maxHp = 20;
         hp = maxHp;
-        hpBar.SetMaxHealth(maxHp);
+        healthBar = this.GetComponentInChildren<HealthBar>();
+        healthBar.SetMaxHealth(maxHp);
         damage = 5;
         attackCD = 0.5f;
         maxSpeed = 5f;

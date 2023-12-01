@@ -13,7 +13,8 @@ public class Player : Entity
         this.Setup();
         maxHp = 100;
         hp = maxHp;
-        hpBar.SetMaxHealth(maxHp);
+        healthBar = this.GetComponentInChildren<HealthBar>();
+        healthBar.SetMaxHealth(maxHp);
         damage = 10;
         attackCD = 0.2f;
         maxSpeed = 10f;

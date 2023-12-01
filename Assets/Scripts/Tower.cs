@@ -5,7 +5,8 @@ public class Tower : Entity
         this.Setup();
         maxHp = 200;
         hp = maxHp;
-        hpBar.SetMaxHealth(maxHp);
+        healthBar = this.GetComponentInChildren<HealthBar>();
+        healthBar.SetMaxHealth(maxHp);
     }
 
     void Update()
