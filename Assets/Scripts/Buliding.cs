@@ -13,8 +13,14 @@ public class Buliding : MonoBehaviour
     [Header("State")]
     public bool cannotBuild;
     [SerializeField] private bool isBlueprint;
+    [SerializeField] private int collisionCount;
 
     //[SerializeField] float health;
+
+    void Start()
+    {
+        collisionCount = 0;  
+    }
 
     public void SetAsBlueprint() { 
         isBlueprint = true;
@@ -30,17 +36,20 @@ public class Buliding : MonoBehaviour
     private void OnTriggerEnter() {
         if (isBlueprint)
         {
+            collisionCount++;
             cannotBuild = true;
             GetComponent<MeshRenderer>().material = blueprintMatErr;
         }
     }
     private void OnTriggerExit()
     {
-        Debug.Log(isBlueprint);
         if (isBlueprint)
         {
-            cannotBuild = false;
-            GetComponent<MeshRenderer>().material = blueprintMat;
+            collisionCount--;
+            if (collisionCount == 0){
+                cannotBuild = false;
+                GetComponent<MeshRenderer>().material = blueprintMat;
+            }
         }
     }
 }
