@@ -20,8 +20,8 @@ public class Player : Entity
         force = 10f;
         drag = 2f;
         resources = new Dictionary<String, int>();
-        resources.Add("Resource1", 0);
-        resources.Add("Resource2", 0);
+        resources.Add("tree", 0);
+        resources.Add("stone", 0);
     }
 
     void Update()

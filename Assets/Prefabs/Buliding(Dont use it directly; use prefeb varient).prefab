@@ -121,13 +121,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueprintMat: {fileID: 2100000, guid: a96072a9be5632544a91129d5db4e5f5, type: 2}
   blueprintMatErr: {fileID: 2100000, guid: ee4921544f70dd5458eab54ac422958c, type: 2}
-  meshRenderers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  buildingMat: {fileID: 2100000, guid: 447ab268871b84107ace984bcd8c2296, type: 2}
   cannotBuild: 0
   isBlueprint: 0
-  buildingMat: {fileID: 0}
+  collisionCount: 0
 --- !u!54 &3701419548039697800
 Rigidbody:
   m_ObjectHideFlags: 0

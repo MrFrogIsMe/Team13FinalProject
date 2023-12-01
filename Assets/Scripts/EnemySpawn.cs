@@ -21,7 +21,7 @@ public class EnemySpawn : MonoBehaviour
             if (count + Time.deltaTime >= cooldown)
             {
                 count = 0;
-                Instantiate(monster);
+                Instantiate(monster, transform.position,    Quaternion.identity);
             }
             else
                 count += Time.deltaTime;

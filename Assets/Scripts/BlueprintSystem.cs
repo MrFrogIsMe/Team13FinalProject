@@ -29,13 +29,13 @@ public class BlueprintSystem : MonoBehaviour
     [SerializeField] private float fadeDuration;
 
     public bool IsHotBarShown() { return hotBar; }
-    public void ShowHotBar( bool show ) { hotBar = show; }
+    public void ShowHotBar(bool show) { hotBar = show; }
     public void Build()
     {
         if (!_toBuild.cannotBuild)
         {
             Instantiate(buildings[selectedSlot], playerT.position + playerT.forward * 2, playerT.rotation)
-                .SetAsBuilding();  
+                .SetAsBuilding();
         }
     }
 
@@ -51,7 +51,7 @@ public class BlueprintSystem : MonoBehaviour
             NewObj._buliding = buildings[i];
             slots.Add(NewObj);
             NewObj.GetComponent<RectTransform>().SetParent(transform);
-            NewObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * (slotWidth + slotPadding) - width / 2 + slotWidth/2, 0f);
+            NewObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * (slotWidth + slotPadding) - width / 2 + slotWidth / 2, 0f);
 
         }
     }
@@ -60,7 +60,7 @@ public class BlueprintSystem : MonoBehaviour
     {
         //update the UI to fit the window
         float scale = Mathf.Min(Screen.height / 484f, Screen.width / 860f);
-        GetComponent<RectTransform>().localScale = new Vector2(scale , scale);
+        GetComponent<RectTransform>().localScale = new Vector2(scale, scale);
 
         appear = new Vector2(0f, Screen.height / 484f * 70f);
         disappear = new Vector2(0f, Screen.height / 484f * -50f);
