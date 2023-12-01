@@ -36,11 +36,13 @@ public class CollectResourceSystem : MonoBehaviour
                 if (highlight.gameObject.GetComponent<Outline>() != null)
                 {
                     outline = highlight.gameObject.GetComponent<Outline>();
+                    outline.OutlineWidth = 7f;
                     outline.enabled = true;
                 }
                 else
                 {
                     outline = highlight.gameObject.AddComponent<Outline>();
+                    outline.OutlineWidth = 7f;
                     outline.enabled = true;
                 }
             }

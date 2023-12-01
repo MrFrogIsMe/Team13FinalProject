@@ -14,7 +14,7 @@ public class Monster : Entity
         damage = 5;
         attackCD = 0.5f;
         maxSpeed = 5f;
-        force = 10f;
+        force = 100f;
         drag = 2f;
     }
 
@@ -39,7 +39,7 @@ public class Monster : Entity
         rb.AddForce(direction.normalized * force);
         if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+            rb.velocity = rb.velocity.normalized * maxSpeed * Time.deltaTime;
         }
     }
 

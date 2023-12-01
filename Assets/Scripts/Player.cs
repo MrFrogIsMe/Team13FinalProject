@@ -17,11 +17,11 @@ public class Player : Entity
         damage = 10;
         attackCD = 0.2f;
         maxSpeed = 10f;
-        force = 10f;
+        force = 100f;
         drag = 2f;
         resources = new Dictionary<String, int>();
-        resources.Add("tree", 0);
-        resources.Add("stone", 0);
+        resources.Add("Tree", 0);
+        resources.Add("Stone", 0);
     }
 
     void Update()
@@ -46,7 +46,7 @@ public class Player : Entity
         rb.AddForce(direction.normalized * force);
         if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+            rb.velocity = rb.velocity.normalized * maxSpeed * Time.deltaTime;
         }
     }
 
