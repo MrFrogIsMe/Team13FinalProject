@@ -8,15 +8,8 @@ public class Monster : Entity
     {
         tower = FindObjectOfType<Tower>();
         this.Setup();
-        maxHp = 20;
         hp = maxHp;
-        healthBar = this.GetComponentInChildren<HealthBar>();
         healthBar.SetMaxHealth(maxHp);
-        damage = 5;
-        attackCD = 0.5f;
-        maxSpeed = 5f;
-        force = 100f;
-        drag = 2f;
     }
 
     void Update()

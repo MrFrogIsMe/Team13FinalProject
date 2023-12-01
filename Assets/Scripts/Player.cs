@@ -11,15 +11,8 @@ public class Player : Entity
     void Start()
     {
         this.Setup();
-        maxHp = 100;
         hp = maxHp;
-        healthBar = this.GetComponentInChildren<HealthBar>();
         healthBar.SetMaxHealth(maxHp);
-        damage = 10;
-        attackCD = 0.2f;
-        maxSpeed = 10f;
-        force = 100f;
-        drag = 2f;
         resources = new Dictionary<String, int>();
         resources.Add("Tree", 0);
         resources.Add("Stone", 0);

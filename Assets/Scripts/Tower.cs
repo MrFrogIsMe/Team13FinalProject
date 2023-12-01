@@ -3,7 +3,6 @@ public class Tower : Entity
     void Start()
     {
         this.Setup();
-        maxHp = 200;
         hp = maxHp;
         healthBar = this.GetComponentInChildren<HealthBar>();
         healthBar.SetMaxHealth(maxHp);
