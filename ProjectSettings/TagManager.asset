@@ -11,6 +11,8 @@ TagManager:
   - Building
   - FxTemporaire
   - Resource
+  - chaseCollider
+  - attackCollider
   layers:
   - Default
   - TransparentFX

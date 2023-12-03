@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Tower : Entity
 {
     void Start()
@@ -14,6 +16,7 @@ public class Tower : Entity
         if (hp <= 0)
         {
             // game over
+            Debug.Log("Tower hp = 0");
         }
     }
 
