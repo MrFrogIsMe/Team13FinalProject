@@ -7,19 +7,14 @@ public class Player : Entity
     public Dictionary<String, int> resources;
     public GameObject fireballSpawnpoint;
     public FireBall fireballTemplate;
+    Camera mainCamera;
 
     void Start()
     {
         this.Setup();
-        maxHp = 100;
         hp = maxHp;
-        healthBar = this.GetComponentInChildren<HealthBar>();
         healthBar.SetMaxHealth(maxHp);
-        damage = 10;
-        attackCD = 0.2f;
-        maxSpeed = 10f;
-        force = 100f;
-        drag = 2f;
+        mainCamera = FindObjectOfType<Camera>();
         resources = new Dictionary<String, int>();
         resources.Add("Tree", 0);
         resources.Add("Stone", 0);
@@ -28,6 +23,7 @@ public class Player : Entity
     void Update()
     {
         this.Move();
+        this.TrackMouseRotation();
 
         if (hp <= 0)
         {
@@ -59,5 +55,19 @@ public class Player : Entity
         fireballTemplate.transform.forward = this.transform.forward;
         fireballTemplate.damage = this.damage;
         Instantiate(fireballTemplate);
+    }
+
+    void TrackMouseRotation()
+    {
+        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane ground = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+
+        if (ground.Raycast(cameraRay, out rayLength))
+        {
+            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+            Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
+            this.transform.LookAt(new Vector3(pointToLook.x, this.transform.position.y, pointToLook.z));
+        }
     }
 }
