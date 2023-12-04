@@ -10,12 +10,14 @@ public class Monster : Entity
 
     // the target the monster is currently chasing
     GameObject chaseTarget;
-    // a list of targets in the attack range
+    // keep track of a list of targets in the chase range
     LinkedList<GameObject> chaseList = new LinkedList<GameObject>();
 
+    // the target the monster is currently attacking
     GameObject attackTarget;
-    // a list of targets to be attacked (Monsters attack in FIFO manner)
-    LinkedList<Collider> attackTargets = new LinkedList<Collider>();
+    // keep track of a list of targets in the attack range
+    LinkedList<GameObject> attackList = new LinkedList<GameObject>();
+    bool isAttacking = false;
 
     void Start()
     {
@@ -35,7 +37,8 @@ public class Monster : Entity
 
         chaseTarget = tower.gameObject;
 
-        Attack();
+        // Attack() is called every .5 seconds to enhance performance
+        InvokeRepeating("Attack", 0f, 0.5f);
     }
 
     void Update()
@@ -45,13 +48,13 @@ public class Monster : Entity
         {
             Destroy(gameObject);
         }
-
+        
         Move();
     }
 
     public override void Move()
     {
-        // In case the current chaseTarget has been destroyed
+        // in case the current chase target has been destroyed
         if (chaseTarget == null)
         {
             chaseTarget = FindNewChaseTarget();
@@ -63,44 +66,43 @@ public class Monster : Entity
 
         rb.velocity = Vector3.zero;
 
-        rb.AddForce(direction.normalized * force);
-        
-        if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
+        // the monster cannot move while attacking
+        if (!isAttacking)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+            rb.AddForce(transform.forward.normalized * force);
+
+            if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
+            {
+                rb.velocity = rb.velocity.normalized * maxSpeed;
+            }
         }
     }
 
     public override void Attack()
     {
-        // calls DealDamageToTarget() every .5 seconds after 0 seconds
-        InvokeRepeating("DealDamageToTarget", 0f, 0.5f);
-    }
-
-    void DealDamageToTarget()
-    {
-        if (attackTargets.Count > 0)
+        // in case the current attack target has been destroyed
+        if (attackTarget == null)
         {
-            // Peek next
-            Collider target = attackTargets.First.Value;
+            attackTarget = FindNewAttackTarget();
+        }
 
-            // Check if the target is null or destroyed
-            if (target == null || target.gameObject == null || !target.gameObject.activeInHierarchy)
-            {
-                attackTargets.RemoveFirst();
-                // Recursive call
-                DealDamageToTarget();
-                return;
-            }
-
-            target.gameObject.GetComponent<Entity>().TakeDamage(damage);
-            attackTargets.RemoveFirst();
+        // if there are targets in the chase range
+        if (attackTarget != null)
+        {
+            Debug.Log(attackTarget);
+            isAttacking = true;
+            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+        }
+        else
+        {
+            isAttacking = false;
         }
     }
+
     public void OnChaseTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Tower"))
         {
             if (other.gameObject.CompareTag("Building"))
             {
@@ -109,6 +111,10 @@ public class Monster : Entity
             else if (other.gameObject.CompareTag("Player"))
             {
                 Debug.Log("Player entered chase range.");
+            }
+            else
+            {
+                Debug.Log("Tower entered chase range.");
             }
 
             chaseList.AddLast(other.gameObject);
@@ -122,7 +128,7 @@ public class Monster : Entity
 
     public void OnChaseTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Tower"))
         {
             if (other.gameObject.CompareTag("Building"))
             {
@@ -131,6 +137,10 @@ public class Monster : Entity
             else if (other.gameObject.CompareTag("Player"))
             {
                 Debug.Log("Player left chase range.");
+            }
+            else
+            {
+                Debug.Log("Tower left chase range.");
             }
 
             chaseList.Remove(other.gameObject);
@@ -144,45 +154,60 @@ public class Monster : Entity
 
     public void OnAttackTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Building"))
+        if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Tower"))
         {
-            Debug.Log("Building entered attack range.");
+            if (other.gameObject.CompareTag("Building"))
+            {
+                Debug.Log("Building entered attack range.");
+            }
+            else if (other.gameObject.CompareTag("Player"))
+            {
+                Debug.Log("Player entered attack range.");
+            }
+            else if (other.gameObject.CompareTag("Tower"))
+            {
+                Debug.Log("Tower entered attack range.");
+            }
 
-        }
-        else if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Player entered attack range.");
-        }
-        else if (other.gameObject.CompareTag("Tower"))
-        {
-            Debug.Log("Tower entered attack range.");
+            attackList.AddLast(other.gameObject);
+
+            if (attackList.Count == 1)
+            {
+                attackTarget = other.gameObject;
+            }
         }
 
-        maxSpeed = 0f;
     }
 
     public void OnAttackTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Building"))
+        if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Tower"))
         {
-            Debug.Log("Building left attack range.");
-        }
-        else if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Player left attack range.");
-        }
-        else if (other.gameObject.CompareTag("Tower"))
-        {
-            Debug.Log("Tower left attack range.");
-        }
+            if (other.gameObject.CompareTag("Building"))
+            {
+                Debug.Log("Building left attack range.");
+            }
+            else if (other.gameObject.CompareTag("Player"))
+            {
+                Debug.Log("Player left attack range.");
+            }
+            else if (other.gameObject.CompareTag("Tower"))
+            {
+                Debug.Log("Tower left attack range.");
+            }
 
-        maxSpeed = 5f;
+            attackList.Remove(other.gameObject);
+
+            if (other.gameObject == attackTarget)
+            {
+                attackTarget = FindNewAttackTarget();
+            }
+        }
     }
 
     // returns the nearest building or player, or tower otherwise
     GameObject FindNewChaseTarget()
     {
-        // the nearestTarget is the nearest building or player, or null otherwise
         GameObject nearestTarget = null;
         float nearestDistance = float.MaxValue;
 
@@ -214,6 +239,39 @@ public class Monster : Entity
         if (nearestTarget == null)
         {
             return tower.gameObject;
+        }
+
+        return nearestTarget;
+    }
+
+    // returns the nearest building or player, or null otherwise
+    GameObject FindNewAttackTarget()
+    {
+        GameObject nearestTarget = null;
+        float nearestDistance = float.MaxValue;
+
+        // iterate through the targets within the range and find the nearest
+        LinkedListNode<GameObject> currentNode = attackList.First;
+
+        while (currentNode != null)
+        {
+            GameObject currentTarget = currentNode.Value;
+
+            // remove the current node if this target has been destroyed
+            if (currentTarget == null)
+            {
+                LinkedListNode<GameObject> nextNode = currentNode.Next;
+                attackList.Remove(currentNode);
+                currentNode = nextNode;
+                continue;
+            }
+
+            float distance = Vector3.Distance(transform.position, currentTarget.gameObject.transform.position);
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestTarget= currentTarget;
+            }
         }
 
         return nearestTarget;

@@ -6,13 +6,9 @@ TagManager:
   tags:
   - Ground
   - Tower
-  - Obstacles
-  - Enemy
   - Building
   - FxTemporaire
   - Resource
-  - chaseCollider
-  - attackCollider
   layers:
   - Default
   - TransparentFX

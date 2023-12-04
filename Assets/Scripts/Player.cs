@@ -28,7 +28,7 @@ public class Player : Entity
         if (hp <= 0)
         {
             // game over
-            Debug.Log("player died");
+            Debug.Log("Player died.");
         }
     }
 

@@ -15,7 +15,7 @@ public class Tower : Entity
         if (hp <= 0)
         {
             // game over
-            Debug.Log("Tower hp = 0");
+            Debug.Log("Game Over");
         }
     }
 
