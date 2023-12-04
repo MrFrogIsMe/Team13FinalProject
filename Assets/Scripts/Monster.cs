@@ -10,13 +10,12 @@ public class Monster : Entity
 
     // the target the monster is currently chasing
     GameObject chaseTarget;
-    // A List of targets in the attack range
+    // a list of targets in the attack range
     LinkedList<GameObject> chaseList = new LinkedList<GameObject>();
 
     GameObject attackTarget;
-    // A List of targets to be attacked (Monsters attack in FIFO manner)
+    // a list of targets to be attacked (Monsters attack in FIFO manner)
     LinkedList<Collider> attackTargets = new LinkedList<Collider>();
-
 
     void Start()
     {
