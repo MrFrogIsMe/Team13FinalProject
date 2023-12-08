@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Buliding : MonoBehaviour
+public class Buliding : Entity
 {
     [Header("Config")]
     [SerializeField] private Material blueprintMat;
@@ -13,11 +13,31 @@ public class Buliding : MonoBehaviour
     [SerializeField] private bool isBlueprint;
     [SerializeField] private int collisionCount;
 
-    //[SerializeField] float health;
+    [Header("Buliding Stat")]
+    [SerializeField] float MaxHealth = 100;
+    [SerializeField] float health = 100;
 
     void Start()
     {
+        healthBar.SetMaxHealth((int)MaxHealth);
         collisionCount = 0;  
+    }
+
+    public override void Move() { 
+    }
+    public override void Attack()
+    {
+    }
+
+
+    public void setMaxHealth(float hp) { 
+        MaxHealth = hp;
+        health = hp;
+        healthBar.SetMaxHealth((int)hp);
+    }
+
+    void setHealth(float hp) { 
+        health = hp >= MaxHealth ? MaxHealth : hp;
     }
 
     public void SetAsBlueprint() { 

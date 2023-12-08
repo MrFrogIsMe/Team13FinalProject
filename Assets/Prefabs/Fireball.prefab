@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1985969932378210418}
   - component: {fileID: 327041963440804834}
   - component: {fileID: 4488034320295896516}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2870581049854348974}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.8704952, z: 0, w: -0.492177}
-  m_LocalPosition: {x: 8.326282, y: 0.43800017, z: -0.9951022}
+  m_LocalRotation: {x: 0, y: 0.4935766, z: 0, w: 0.8697024}
+  m_LocalPosition: {x: 69.32132, y: 0.4380002, z: 92.27529}
   m_LocalScale: {x: 0.45199, y: 0.45199, z: 0.45199}
   m_ConstrainProportionsScale: 0
   m_Children: []

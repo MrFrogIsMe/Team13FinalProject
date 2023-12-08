@@ -9,6 +9,9 @@ TagManager:
   - Building
   - FxTemporaire
   - Resource
+  - chaseCollider
+  - attackCollider
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Fireball
+  - EnemyChildrenCollider
   - 
   - 
   - 

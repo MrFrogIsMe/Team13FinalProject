@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.12093862, g: 0.27587286, b: 0.48858643, a: 1}
+  m_IndirectSpecularColor: {r: 0.12061628, g: 0.27586377, b: 0.48859012, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2471,7 +2471,7 @@ MonoBehaviour:
   playerT: {fileID: 772666384}
   slot: {fileID: 1811502045701390904, guid: 3ea76e357a288ec40b0eacc092390904, type: 3}
   buildings:
-  - {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
+  - {fileID: 4677138032014611782, guid: daeb1a3ebc7ba3947a08fc8733748176, type: 3}
   - {fileID: 620113674948838102, guid: b6b0582fe15b92c408f6a1a6914804e4, type: 3}
   - {fileID: 2664105771193875236, guid: 270adba97be708345b5d029021c0e225, type: 3}
   - {fileID: 2664105771193875236, guid: 270adba97be708345b5d029021c0e225, type: 3}

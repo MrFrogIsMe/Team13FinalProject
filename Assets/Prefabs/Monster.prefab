@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1202639755980650656}
   - component: {fileID: 7020219940682004122}
   - component: {fileID: 8376725588222018970}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: chaseCollider
   m_TagString: chaseCollider
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 5244632891314946765}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 2715545112412875346}
   - component: {fileID: 1688876913157074874}
   - component: {fileID: 7461502723889253352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: attackCollider
   m_TagString: attackCollider
   m_Icon: {fileID: 0}
