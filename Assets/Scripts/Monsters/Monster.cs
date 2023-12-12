@@ -1,12 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Monster : Entity
 {
     public Tower tower;
     public Player player;
+
+    public int dropExp;
 
     // the target the monster is currently chasing
     GameObject chaseTarget;
@@ -25,15 +25,8 @@ public class Monster : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 20;
-        hp = maxHp;
-        healthBar.SetMaxHealth(maxHp);
-
-        damage = 2;
-        attackCD = 0.5f;
-        maxSpeed = 5f;
-        force = 200f;
-        drag = 2f;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
         chaseTarget = tower.gameObject;
 
@@ -44,11 +37,11 @@ public class Monster : Entity
     void Update()
     {
         // Check if the monster is alive
-        if (hp <= 0 && gameObject != null)
+        if (health <= 0 && gameObject != null)
         {
-            Destroy(gameObject);
+            Die();
         }
-        
+
         Move();
     }
 
@@ -90,12 +83,18 @@ public class Monster : Entity
         if (attackTarget != null)
         {
             isAttacking = true;
-            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
         else
         {
             isAttacking = false;
         }
+    }
+
+    public override void Die()
+    {
+        ExperienceSystem.Instance.AddExperience(dropExp);
+        Destroy(gameObject);
     }
 
     public void OnChaseTriggerEnter(Collider other)
@@ -230,7 +229,7 @@ public class Monster : Entity
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestTarget= currentTarget;
+                nearestTarget = currentTarget;
             }
         }
 
@@ -269,7 +268,7 @@ public class Monster : Entity
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestTarget= currentTarget;
+                nearestTarget = currentTarget;
             }
         }
 

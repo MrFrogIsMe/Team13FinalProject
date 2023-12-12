@@ -6,7 +6,7 @@ public class Building : Entity
     [SerializeField] private Material blueprintMat;
     [SerializeField] private Material blueprintMatErr;
     [SerializeField] private Material buildingMat;
-    
+
 
     [Header("State")]
     public bool cannotBuild;
@@ -15,43 +15,46 @@ public class Building : Entity
 
     [Header("Buliding Stat")]
     [SerializeField] float MaxHealth = 100;
-    [SerializeField] float health = 100;
+    [SerializeField] float healthPoint = 100;
 
     void Start()
     {
         healthBar.SetMaxHealth((int)MaxHealth);
-        collisionCount = 0;  
+        collisionCount = 0;
     }
 
-    public override void Move() { 
-    }
-    public override void Attack()
+    public override void Move() { }
+    public override void Attack() { }
+    public override void Die() { }
+
+
+    public void setMaxHealth(float hp)
     {
-    }
-
-
-    public void setMaxHealth(float hp) { 
         MaxHealth = hp;
-        health = hp;
+        healthPoint = hp;
         healthBar.SetMaxHealth((int)hp);
     }
 
-    void setHealth(float hp) { 
-        health = hp >= MaxHealth ? MaxHealth : hp;
+    void setHealth(float hp)
+    {
+        healthPoint = hp >= MaxHealth ? MaxHealth : hp;
     }
 
-    public void SetAsBlueprint() { 
+    public void SetAsBlueprint()
+    {
         isBlueprint = true;
         GetComponent<Collider>().isTrigger = true;
         GetComponent<MeshRenderer>().material = blueprintMat;
     }
-    public void SetAsBuilding(){
+    public void SetAsBuilding()
+    {
         isBlueprint = false;
         GetComponent<Collider>().isTrigger = false;
         GetComponent<MeshRenderer>().material = buildingMat;
     }
 
-    private void OnTriggerEnter() {
+    private void OnTriggerEnter()
+    {
         if (isBlueprint)
         {
             collisionCount++;
@@ -64,7 +67,8 @@ public class Building : Entity
         if (isBlueprint)
         {
             collisionCount--;
-            if (collisionCount == 0){
+            if (collisionCount == 0)
+            {
                 cannotBuild = false;
                 GetComponent<MeshRenderer>().material = blueprintMat;
             }

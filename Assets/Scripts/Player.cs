@@ -12,8 +12,8 @@ public class Player : Entity
     void Start()
     {
         this.Setup();
-        hp = maxHp;
-        healthBar.SetMaxHealth(maxHp);
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         mainCamera = FindObjectOfType<Camera>();
         resources = new Dictionary<String, int>();
         resources.Add("Tree", 0);
@@ -25,10 +25,9 @@ public class Player : Entity
         this.Move();
         this.TrackMouseRotation();
 
-        if (hp <= 0)
+        if (health <= 0)
         {
-            // game over
-            Debug.Log("Player died.");
+            this.Die();
         }
     }
 
@@ -53,8 +52,14 @@ public class Player : Entity
         // Shoot fireball
         fireballTemplate.transform.position = fireballSpawnpoint.transform.position;
         fireballTemplate.transform.forward = this.transform.forward;
-        fireballTemplate.damage = this.damage;
+        fireballTemplate.damage = this.attack;
         Instantiate(fireballTemplate);
+    }
+
+    public override void Die()
+    {
+        // game over
+        Debug.Log("GameOver : Player Died");
     }
 
     void TrackMouseRotation()
@@ -69,5 +74,22 @@ public class Player : Entity
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
             this.transform.LookAt(new Vector3(pointToLook.x, this.transform.position.y, pointToLook.z));
         }
+    }
+
+    /* Experience System */
+    void OnEnable()
+    {
+        ExperienceSystem.Instance.OnLevelChange.AddListener(LevelUp);
+    }
+
+    void OnDisable()
+    {
+        ExperienceSystem.Instance.OnLevelChange.RemoveListener(LevelUp);
+    }
+
+    void LevelUp()
+    {
+        attack += 10;
+        health += 10;
     }
 }

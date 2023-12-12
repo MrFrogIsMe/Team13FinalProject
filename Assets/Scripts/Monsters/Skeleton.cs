@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Skeleton : Entity
 {
@@ -25,11 +23,11 @@ public class Skeleton : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 120;
-        hp = maxHp;
-        healthBar.SetMaxHealth(maxHp);
+        maxHealth = 120;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
-        damage = 12;
+        attack = 12;
         attackCD = 0.5f;
         maxSpeed = 5f;
         force = 200f;
@@ -44,9 +42,9 @@ public class Skeleton : Entity
     void Update()
     {
         // Check if the monster is alive
-        if (hp <= 0 && gameObject != null)
+        if (health <= 0 && gameObject != null)
         {
-            Destroy(gameObject);
+            Die();
         }
         
         Move();
@@ -91,12 +89,17 @@ public class Skeleton : Entity
         {
             Debug.Log(attackTarget);
             isAttacking = true;
-            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
         else
         {
             isAttacking = false;
         }
+    }
+
+    public override void Die()
+    {
+        Destroy(gameObject);
     }
 
     public void OnChaseTriggerEnter(Collider other)
