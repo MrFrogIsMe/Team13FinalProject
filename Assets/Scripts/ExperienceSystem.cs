@@ -35,5 +35,15 @@ public class ExperienceSystem : MonoBehaviour
         }
         OnExperienceChange?.Invoke(amount);
     }
+
+    public int GetExperience()
+    {
+        return exp;
+    }
+    
+    public int GetLevel()
+    {
+        return level;
+    }
 }
 
