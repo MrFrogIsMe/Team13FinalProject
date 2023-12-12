@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -65,7 +64,7 @@ public class Cannon : Building
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        if(other.gameObject.CompareTag("Monster"))
         {
             attackList.AddLast(other.gameObject);
 
@@ -78,7 +77,7 @@ public class Cannon : Building
 
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        if(other.gameObject.CompareTag("Monster"))
         {
             attackList.Remove(other.gameObject);
 

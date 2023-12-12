@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 5244632891314946765}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Enemy
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -559,9 +559,9 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   damage: 5
   attackCD: 0.5
-  maxSpeed: 5
+  maxSpeed: 10
   force: 100
-  drag: 2
+  drag: 1
   tower: {fileID: 0}
   player: {fileID: 0}
 --- !u!65 &6096174390411321306

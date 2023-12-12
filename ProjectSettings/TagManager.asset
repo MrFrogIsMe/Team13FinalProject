@@ -11,7 +11,7 @@ TagManager:
   - Resource
   - chaseCollider
   - attackCollider
-  - Enemy
+  - Monster
   layers:
   - Default
   - TransparentFX

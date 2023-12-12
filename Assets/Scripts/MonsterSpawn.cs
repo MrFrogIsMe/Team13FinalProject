@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawn : MonoBehaviour
+public class MonsterSpawn : MonoBehaviour
 {
-    public Monster monster;
+    public Monster monsterPrefab;
     public float cooldown;
     public float count;
     public bool enableSpawning;
+    public Transform monsters;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +20,8 @@ public class EnemySpawn : MonoBehaviour
             if (count + Time.deltaTime >= cooldown)
             {
                 count = 0;
-                Instantiate(monster, transform.position,    Quaternion.identity);
+                Monster monster = Instantiate(monsterPrefab, transform.position,    Quaternion.identity);
+                monster.transform.parent = monsters;
             }
             else
                 count += Time.deltaTime;
