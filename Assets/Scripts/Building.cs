@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Buliding : Entity
+public class Building : Entity
 {
     [Header("Config")]
     [SerializeField] private Material blueprintMat;

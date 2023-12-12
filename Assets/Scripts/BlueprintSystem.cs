@@ -9,7 +9,7 @@ public class BlueprintSystem : MonoBehaviour
     [Header("Config")]
     [SerializeField] Transform playerT;
     [SerializeField] private Slot slot;
-    [SerializeField] private List<Buliding> buildings;
+    [SerializeField] private List<Building> buildings;
 
     [Header("HotbarVisual")]
     [SerializeField] Color activeColor;
@@ -17,7 +17,7 @@ public class BlueprintSystem : MonoBehaviour
 
     [Header("State")]
     [SerializeField] private bool hotBar = false;
-    [SerializeField] Buliding _toBuild;
+    [SerializeField] Building _toBuild;
     [SerializeField] int selectedSlot;
     [SerializeField] private List<Slot> slots;
 

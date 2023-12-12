@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Monster : Entity
+public class Skeleton : Entity
 {
     public Tower tower;
     public Player player;
@@ -25,11 +25,11 @@ public class Monster : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 20;
+        maxHp = 120;
         hp = maxHp;
         healthBar.SetMaxHealth(maxHp);
 
-        damage = 2;
+        damage = 12;
         attackCD = 0.5f;
         maxSpeed = 5f;
         force = 200f;
