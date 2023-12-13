@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public Buliding _buliding;
+    public Building _buliding;
 
     public void changeColor(Color color)
     {

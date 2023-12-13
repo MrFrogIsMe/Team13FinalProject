@@ -5,25 +5,28 @@ public class FireBall : MonoBehaviour
     public int damage;
     float speed = 50f;
     Vector3 movement;
+    Rigidbody rb;
 
     void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         Destroy(this.gameObject, 2f);
     }
 
     void Update()
     {
-        this.transform.position += this.transform.forward * speed * Time.deltaTime;
+        rb.velocity = transform.forward.normalized * speed;
     }
 
     void OnTriggerEnter(Collider other)
     {
         Destroy(this.gameObject);
-        print($"hit: {other.tag}");
-        if (other.CompareTag("Enemy"))
+        // print($"hit: {other.tag}");
+        if (other.CompareTag("Monster"))
         {
-            other.GetComponent<Entity>().TakeDamage(damage);
-            print($"{other.name}.hp = {other.GetComponent<Entity>().hp}");
+            // print($"{other.gameObject}");
+            other.GetComponent<Monster>().TakeDamage(damage);
+            // print($"{other.name}.hp = {other.GetComponent<Entity>().hp}");
         }
     }
 }

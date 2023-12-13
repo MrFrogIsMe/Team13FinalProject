@@ -1,11 +1,13 @@
+using UnityEngine;
+
 public class Tower : Entity
 {
     void Start()
     {
         this.Setup();
-        maxHp = 200;
         hp = maxHp;
-        hpBar.SetMaxHealth(maxHp);
+        healthBar = this.GetComponentInChildren<HealthBar>();
+        healthBar.SetMaxHealth(maxHp);
     }
 
     void Update()
@@ -13,6 +15,7 @@ public class Tower : Entity
         if (hp <= 0)
         {
             // game over
+            Debug.Log("Game Over");
         }
     }
 
