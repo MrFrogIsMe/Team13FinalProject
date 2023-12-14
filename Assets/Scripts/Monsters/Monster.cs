@@ -34,7 +34,7 @@ public class Monster : Entity
         damage = 2;
         attackCD = 0.5f;
         maxSpeed = 5f;
-        force = 200f;
+        force = 1500f;
         drag = 2f;
 
         chaseTarget = tower.gameObject;
