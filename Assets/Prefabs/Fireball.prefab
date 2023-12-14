@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2870581049854348974}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.35570753, z: 0, w: 0.9345973}
-  m_LocalPosition: {x: 72.84656, y: 0.4380001, z: 92.47599}
+  m_LocalRotation: {x: 0, y: -0.033420984, z: -0, w: 0.9994414}
+  m_LocalPosition: {x: 4.92994, y: 0.43800014, z: 13.130178}
   m_LocalScale: {x: 0.45199, y: 0.45199, z: 0.45199}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,4 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabcc339526354ce4960eb7f953ed132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 135
+  damage: 5

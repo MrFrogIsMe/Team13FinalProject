@@ -160,12 +160,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fcf0d8ab5aa434c95754cec708b182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  healthBar: {fileID: 0}
+  attack: 0
+  attackCD: 0
+  maxSpeed: 0
+  force: 0
+  drag: 0
   blueprintMat: {fileID: 0}
   blueprintMatErr: {fileID: 0}
+  blueprintMatGray: {fileID: 0}
   buildingMat: {fileID: 0}
   cannotBuild: 0
   isBlueprint: 0
   collisionCount: 0
+  MaxHealth: 100
+  healthPoint: 100
+  resources:
+  - Tree
+  quantity: 02000000
 --- !u!65 &8296853334761186076
 BoxCollider:
   m_ObjectHideFlags: 0

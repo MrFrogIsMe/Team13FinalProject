@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : Entity
 {
     public Dictionary<String, int> resources;
+    public Inventory inv;
     public GameObject fireballSpawnpoint;
     public FireBall fireballTemplate;
     Camera mainCamera;
@@ -29,6 +30,7 @@ public class Player : Entity
         {
             this.Die();
         }
+
     }
 
     public override void Move()

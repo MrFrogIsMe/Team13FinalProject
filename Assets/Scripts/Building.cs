@@ -1,15 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Building : Entity
 {
     [Header("Config")]
     [SerializeField] private Material blueprintMat;
     [SerializeField] private Material blueprintMatErr;
+    [SerializeField] private Material blueprintMatGray;
     [SerializeField] private Material buildingMat;
 
 
     [Header("State")]
     public bool cannotBuild;
+    public bool enoughResource;
     [SerializeField] private bool isBlueprint;
     [SerializeField] private int collisionCount;
 
@@ -17,10 +21,38 @@ public class Building : Entity
     [SerializeField] float MaxHealth = 100;
     [SerializeField] float healthPoint = 100;
 
+    [Header("Recipe")]
+    [SerializeField] List<String> resources;
+    [SerializeField] List<int> quantity;
+
+    public Dictionary<String, int> getRecipe() { 
+        Dictionary<String,int> rep = new Dictionary<String, int>();
+        for (int i = 0; i < resources.Count; i++) {
+                rep.Add(resources[i], quantity[i]);
+        }
+        return rep;
+    }
+
     void Start()
     {
         healthBar.SetMaxHealth((int)MaxHealth);
         collisionCount = 0;
+
+        int r = resources.Count;
+        int q = quantity.Count;
+        if (r != q) {
+            if (r > q) {
+                for (int i = q - 1; i < r; i++) {
+                    quantity.Add(0);
+                }
+            }
+            else {
+                for (int i = r - 1; i < q; i++)
+                {
+                    resources.Add("Resource");
+                }
+            }
+        }
     }
 
     public override void Move() { }
@@ -44,7 +76,8 @@ public class Building : Entity
     {
         isBlueprint = true;
         GetComponent<Collider>().isTrigger = true;
-        GetComponent<MeshRenderer>().material = blueprintMat;
+        //Debug.Log(enoughResource);
+        GetComponent<MeshRenderer>().material = enoughResource ? blueprintMat : blueprintMatGray;
     }
     public void SetAsBuilding()
     {
@@ -70,7 +103,12 @@ public class Building : Entity
             if (collisionCount == 0)
             {
                 cannotBuild = false;
-                GetComponent<MeshRenderer>().material = blueprintMat;
+                if (enoughResource)
+                {
+                    GetComponent<MeshRenderer>().material = blueprintMat;
+                }
+                else
+                    GetComponent<MeshRenderer>().material = blueprintMatGray;
             }
         }
     }
