@@ -17,6 +17,8 @@ public class Slime : Entity
     LinkedList<GameObject> attackList = new LinkedList<GameObject>();
     bool isAttacking = false;
 
+    Animator anim;
+
     void Start()
     {
         tower = FindObjectOfType<Tower>();
@@ -37,6 +39,8 @@ public class Slime : Entity
 
         // Attack() is called every .5 seconds to enhance performance
         InvokeRepeating("Attack", 0f, 0.5f);
+
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -46,7 +50,7 @@ public class Slime : Entity
         {
             Die();
         }
-        
+
         Move();
     }
 
@@ -67,6 +71,7 @@ public class Slime : Entity
         // the monster cannot move while attacking
         if (!isAttacking)
         {
+            anim.SetTrigger("Jump");
             rb.AddForce(transform.forward.normalized * force);
 
             if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
@@ -83,13 +88,13 @@ public class Slime : Entity
         {
             attackTarget = FindNewAttackTarget();
         }
-
         // if there are targets in the chase range
         if (attackTarget != null)
         {
             Debug.Log(attackTarget);
             isAttacking = true;
             attackTarget.GetComponent<Entity>().TakeDamage(attack);
+            anim.SetTrigger("Attack");
         }
         else
         {
@@ -234,7 +239,7 @@ public class Slime : Entity
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestTarget= currentTarget;
+                nearestTarget = currentTarget;
             }
         }
 
@@ -273,7 +278,7 @@ public class Slime : Entity
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestTarget= currentTarget;
+                nearestTarget = currentTarget;
             }
         }
 

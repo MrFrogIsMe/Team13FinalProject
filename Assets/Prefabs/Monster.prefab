@@ -554,17 +554,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e932352dad4847a7bc412d29312d32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 20
+  hp: 0
+  maxHp: 20
   healthBar: {fileID: 0}
-  attack: 0
+  damage: 5
   attackCD: 0.5
-  maxSpeed: 10
-  force: 100
+  maxSpeed: 20
+  force: 200
   drag: 1
   tower: {fileID: 0}
   player: {fileID: 0}
-  dropExp: 5
 --- !u!65 &6096174390411321306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -611,7 +610,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!1 &7586179673493918139
 GameObject:

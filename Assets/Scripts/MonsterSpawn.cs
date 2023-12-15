@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MonsterSpawn : MonoBehaviour
 {
-    public Monster monsterPrefab;
+    public GameObject monsterPrefab;
     public float cooldown;
     public float count;
     public bool enableSpawning;
@@ -20,7 +20,7 @@ public class MonsterSpawn : MonoBehaviour
             if (count + Time.deltaTime >= cooldown)
             {
                 count = 0;
-                Monster monster = Instantiate(monsterPrefab, transform.position,    Quaternion.identity);
+                GameObject monster = Instantiate(monsterPrefab, transform.position,    Quaternion.identity);
                 monster.transform.parent = monsters;
             }
             else

@@ -9,9 +9,11 @@ public class Player : Entity
     public GameObject fireballSpawnpoint;
     public FireBall fireballTemplate;
     Camera mainCamera;
+    Animator anim;
 
     void Start()
     {
+        anim = GetComponent<Animator>() ;
         this.Setup();
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -23,6 +25,9 @@ public class Player : Entity
 
     void Update()
     {
+
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveVertical = Input.GetAxisRaw("Vertical");
         this.Move();
         this.TrackMouseRotation();
 
@@ -43,6 +48,12 @@ public class Player : Entity
         // Move by adding force
         // use sqrMagnitude to increace performance
         rb.AddForce(direction.normalized * force);
+        if(direction.normalized * force!=new Vector3(0f, 0f, 0f)){
+            anim.SetBool("run",true);
+        }else{
+            anim.SetBool("run",false);
+        }
+        
         if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
         {
             rb.velocity = rb.velocity.normalized * maxSpeed * Time.deltaTime;
@@ -56,12 +67,7 @@ public class Player : Entity
         fireballTemplate.transform.forward = this.transform.forward;
         fireballTemplate.damage = this.attack;
         Instantiate(fireballTemplate);
-    }
-
-    public override void Die()
-    {
-        // game over
-        Debug.Log("GameOver : Player Died");
+        anim.SetTrigger("attack");
     }
 
     void TrackMouseRotation()
@@ -76,6 +82,13 @@ public class Player : Entity
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
             this.transform.LookAt(new Vector3(pointToLook.x, this.transform.position.y, pointToLook.z));
         }
+    }
+
+    public override void Die()
+    {
+        // game over
+        Debug.Log("GameOver : Player Died");
+        anim.SetTrigger("dead");
     }
 
     /* Experience System */

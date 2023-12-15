@@ -19,6 +19,8 @@ public class Monster : Entity
     LinkedList<GameObject> attackList = new LinkedList<GameObject>();
     bool isAttacking = false;
 
+    Animator anim;
+
     void Start()
     {
         tower = FindObjectOfType<Tower>();
@@ -32,6 +34,8 @@ public class Monster : Entity
 
         // Attack() is called every .5 seconds to enhance performance
         InvokeRepeating("Attack", 0f, 0.5f);
+
+        anim = GetComponent<Animator>() ;
     }
 
     void Update()
@@ -63,7 +67,7 @@ public class Monster : Entity
         if (!isAttacking)
         {
             rb.AddForce(transform.forward.normalized * force);
-
+            anim.SetTrigger("Jump");
             if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
             {
                 rb.velocity = rb.velocity.normalized * maxSpeed;
@@ -82,6 +86,7 @@ public class Monster : Entity
         // if there are targets in the chase range
         if (attackTarget != null)
         {
+            anim.SetTrigger("Attack");
             isAttacking = true;
             attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
