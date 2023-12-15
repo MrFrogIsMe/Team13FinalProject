@@ -6,6 +6,7 @@ public class ExperienceSystem : MonoBehaviour
     public static ExperienceSystem Instance;
     public UnityEvent<int> OnExperienceChange;
     public UnityEvent OnLevelChange;
+    public expBar expBar;
 
     public int exp = 0;
     public int nextLevelExp = 10;
@@ -23,6 +24,7 @@ public class ExperienceSystem : MonoBehaviour
             Instance = this;
             exp = 0;
             level = 1;
+            expBar.setLevel(level,nextLevelExp);
         }
     }
 
@@ -32,11 +34,13 @@ public class ExperienceSystem : MonoBehaviour
         print($"exp = {exp}, amount = {amount}, nextLevelExp = {nextLevelExp}");
         if (exp >= nextLevelExp)
         {
-            exp = 0;
+            exp = exp - nextLevelExp;
             ++level;
             OnLevelChange?.Invoke();
+            expBar.setLevel(level, nextLevelExp);
         }
         OnExperienceChange?.Invoke(amount);
+        expBar.setExp(exp);
     }
 
     public int GetExperience()

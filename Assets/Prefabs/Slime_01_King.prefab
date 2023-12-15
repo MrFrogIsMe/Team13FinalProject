@@ -281,6 +281,7 @@ MonoBehaviour:
   drag: 1
   tower: {fileID: 0}
   player: {fileID: 0}
+  dropExp: 2
 --- !u!1 &1623952883345292721
 GameObject:
   m_ObjectHideFlags: 0
