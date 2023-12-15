@@ -15,7 +15,7 @@ public abstract class Entity : MonoBehaviour
     public abstract void Move();
     public abstract void Attack();
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         hp = hp - damage < 0 ? 0 : hp - damage;
         healthBar.SetHealth(hp);

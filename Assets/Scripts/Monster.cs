@@ -34,7 +34,7 @@ public class Monster : Entity
         damage = 2;
         attackCD = 0.5f;
         maxSpeed = 5f;
-        force = 3000f;
+        force = 2500f;
         drag = 2f;
 
         chaseTarget = tower.gameObject;
@@ -108,6 +108,13 @@ public class Monster : Entity
         {
             isAttacking = false;
         }
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        hp = hp - damage < 0 ? 0 : hp - damage;
+        healthBar.SetHealth(hp);
+        // print($"Take damage: {damage}, hp: {hp}");
     }
 
     public void OnChaseTriggerEnter(Collider other)
