@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.12061628, g: 0.27586377, b: 0.48859012, a: 1}
+  m_IndirectSpecularColor: {r: 0.12093856, g: 0.2758711, b: 0.4885862, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -691,8 +691,8 @@ Transform:
   - {fileID: 1097291488}
   - {fileID: 1650770845}
   - {fileID: 1934248744}
-  - {fileID: 1411016659}
   - {fileID: 143012905}
+  - {fileID: 1221560198}
   m_Father: {fileID: 1153673334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &180437848
@@ -836,7 +836,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 360015829}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7481516959227194556, guid: fd871d1fe2ef27846bc670f8e89cbf59, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1027,7 +1027,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 827284397}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4743894042022658711, guid: b2826bcf3eeca044897817e1ab9c4064, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1078,11 +1078,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2826bcf3eeca044897817e1ab9c4064, type: 3}
---- !u!4 &346754562 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4743894042022658711, guid: b2826bcf3eeca044897817e1ab9c4064, type: 3}
-  m_PrefabInstance: {fileID: 346754561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &346868665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3265,10 +3260,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4025985044152625150, guid: 7e0fbad7a35124d36a678a3b07ae792e, type: 3}
   m_PrefabInstance: {fileID: 1198934739}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1199871805 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7049927935338500377, guid: bb758c08b3a7e0f42a1743dfd6d97b04, type: 3}
+  m_PrefabInstance: {fileID: 1786052951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1206957634 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459958, guid: 9469bb1d3aa88ca40aa4079e96a27f8e, type: 3}
   m_PrefabInstance: {fileID: 306539105}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1221560198 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 478606, guid: a9cc5585b9634a9449920c03ec6bc243, type: 3}
+  m_PrefabInstance: {fileID: 2071865750}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1262237962
 GameObject:
@@ -3775,7 +3780,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 827284397}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6981374108352111177, guid: 247a46b461ccc9842b98ac536dd67600, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3826,11 +3831,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 247a46b461ccc9842b98ac536dd67600, type: 3}
---- !u!4 &1651293677 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6981374108352111177, guid: 247a46b461ccc9842b98ac536dd67600, type: 3}
-  m_PrefabInstance: {fileID: 1651293676}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1665092571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3900,20 +3900,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2622c171f8649ffb1b926c2d5eaec7, type: 3}
---- !u!4 &1669169766 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 746589272122970882, guid: afc4ab9b69342fe469fc17fde1746c4a, type: 3}
-  m_PrefabInstance: {fileID: 1292948512}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1674717529 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459958, guid: 9469bb1d3aa88ca40aa4079e96a27f8e, type: 3}
   m_PrefabInstance: {fileID: 180437848}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1680377640 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5528063107972811676, guid: e8283e5e73c1e49479df6922a84b094d, type: 3}
-  m_PrefabInstance: {fileID: 751030950}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1697749080
 GameObject:
@@ -3950,6 +3940,9 @@ MonoBehaviour:
   OnLevelChange:
     m_PersistentCalls:
       m_Calls: []
+  exp: 0
+  nextLevelExp: 10
+  level: 1
 --- !u!4 &1697749082
 Transform:
   m_ObjectHideFlags: 0
@@ -4366,7 +4359,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 360015829}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7481516959227194556, guid: fd871d1fe2ef27846bc670f8e89cbf59, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4550,11 +4543,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799657136}
   m_CullTransparentMesh: 1
---- !u!4 &1868279087 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5528063107972811676, guid: e8283e5e73c1e49479df6922a84b094d, type: 3}
-  m_PrefabInstance: {fileID: 587346549}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1909491510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459958, guid: 9469bb1d3aa88ca40aa4079e96a27f8e, type: 3}
@@ -5061,7 +5049,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4025985044152625150, guid: 7e0fbad7a35124d36a678a3b07ae792e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1199871805}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e0fbad7a35124d36a678a3b07ae792e, type: 3}
 --- !u!1660057539 &9223372036854775807
@@ -5083,3 +5074,8 @@ SceneRoots:
   - {fileID: 528312431}
   - {fileID: 516150465}
   - {fileID: 1665092571}
+  - {fileID: 1779833153}
+  - {fileID: 1407966896}
+  - {fileID: 336808986}
+  - {fileID: 346754561}
+  - {fileID: 1651293676}

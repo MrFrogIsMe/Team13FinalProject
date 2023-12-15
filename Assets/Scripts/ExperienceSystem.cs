@@ -7,9 +7,9 @@ public class ExperienceSystem : MonoBehaviour
     public UnityEvent<int> OnExperienceChange;
     public UnityEvent OnLevelChange;
 
-    int exp;
-    int nextLevelExp;
-    int level;
+    public int exp;
+    public int nextLevelExp;
+    public int level;
 
     // Singleton
     void Awake()
