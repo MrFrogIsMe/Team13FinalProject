@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private bool Inv = false;
     [SerializeField] private int slotPaddingY;
-    [SerializeField] List<InvSlot> invSlots;
+    List<InvSlot> invSlots;
 
     [Header("InvAnimationUtil")]
     [SerializeField] private AnimationCurve _curve;
@@ -57,6 +57,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        invSlots = new List<InvSlot> { };
     }
 
     void Update()

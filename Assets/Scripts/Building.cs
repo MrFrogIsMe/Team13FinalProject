@@ -9,7 +9,7 @@ public class Building : Entity
     [SerializeField] private Material blueprintMatErr;
     [SerializeField] private Material blueprintMatGray;
     [SerializeField] private Material buildingMat;
-
+    [SerializeField] private float ground;
 
     [Header("State")]
     public bool cannotBuild;
@@ -31,6 +31,10 @@ public class Building : Entity
                 rep.Add(resources[i], quantity[i]);
         }
         return rep;
+    }
+
+    public float getGroundCoor() { 
+        return ground;
     }
 
     void Start()

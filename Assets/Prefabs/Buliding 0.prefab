@@ -53,6 +53,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
+      propertyPath: ground
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
       propertyPath: buildingMat
       value: 
       objectReference: {fileID: 2100000, guid: 447ab268871b84107ace984bcd8c2296, type: 2}

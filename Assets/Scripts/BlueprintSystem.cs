@@ -40,8 +40,17 @@ public class BlueprintSystem : MonoBehaviour
     {
         if (!_toBuild.cannotBuild && _toBuild.enoughResource)
         {
-            Instantiate(buildings[selectedSlot], playerT.transform.position + playerT.transform.forward * 2, playerT.transform.rotation)
+            Vector3 position = playerT.transform.position + playerT.transform.forward * 2;
+            position.y = buildings[selectedSlot].getGroundCoor();
+
+            Quaternion rotation = Quaternion.Euler(
+                buildings[selectedSlot].transform.eulerAngles.x, 
+                playerT.transform.eulerAngles.y, buildings[selectedSlot].
+                transform.eulerAngles.z);
+
+            Instantiate(buildings[selectedSlot],position,rotation)
                 .SetAsBuilding();
+
             foreach (var r in _toBuild.getRecipe())
             {
                 playerT.resources[r.Key] -= r.Value;
@@ -123,10 +132,19 @@ public class BlueprintSystem : MonoBehaviour
                 slots[i].changeColor(i == selectedSlot ? activeColor : Color.white);
             }
 
+            Vector3 position = playerT.transform.position + playerT.transform.forward * 2;
+            position.y = buildings[selectedSlot].getGroundCoor();
+
+            Quaternion rotation = Quaternion.Euler(
+                buildings[selectedSlot].transform.eulerAngles.x,
+                playerT.transform.eulerAngles.y, buildings[selectedSlot].
+                transform.eulerAngles.z);
+
             if (!_toBuild)
             {
-                _toBuild = Instantiate(buildings[selectedSlot], playerT.transform.position + playerT.transform.forward * 2, playerT.transform.rotation);
+                _toBuild = Instantiate(buildings[selectedSlot], position, rotation);
                 _toBuild.enoughResource = true;
+
                 foreach (var r in _toBuild.getRecipe()){
                     int k = -1;
                     playerT.resources.TryGetValue(r.Key, out k);
@@ -139,8 +157,8 @@ public class BlueprintSystem : MonoBehaviour
                 _toBuild.SetAsBlueprint();
             }
             else
-                _toBuild.transform.position = playerT.transform.position + playerT.transform.forward * 2;
-            _toBuild.transform.rotation = Quaternion.Euler(0f, playerT.transform.eulerAngles.y, 0f);
+                _toBuild.transform.position = position;
+            _toBuild.transform.rotation = rotation;
 
         }
         else
