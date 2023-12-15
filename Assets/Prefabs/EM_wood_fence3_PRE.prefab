@@ -172,12 +172,16 @@ MonoBehaviour:
   drag: 0
   blueprintMat: {fileID: 0}
   blueprintMatErr: {fileID: 0}
+  blueprintMatGray: {fileID: 0}
   buildingMat: {fileID: 0}
   cannotBuild: 0
   isBlueprint: 0
   collisionCount: 0
   MaxHealth: 100
-  health: 100
+  healthPoint: 100
+  resources:
+  - Tree
+  quantity: 02000000
 --- !u!65 &8296853334761186076
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BlueprintSystem : MonoBehaviour
 {
     [Header("Config")]
-    [SerializeField] Transform playerT;
+    [SerializeField] Player playerT;
     [SerializeField] private Slot slot;
     [SerializeField] private List<Building> buildings;
 
@@ -26,14 +26,25 @@ public class BlueprintSystem : MonoBehaviour
     [SerializeField] private float fade;
     [SerializeField] private float fadeDuration;
 
+    [Header("HotbarUtil")]
+    [SerializeField] private float HotBarWidth;
+    [SerializeField] private float scale;
+
     public bool IsHotBarShown() { return hotBar; }
     public void ShowHotBar(bool show) { hotBar = show; }
+    public float getHotbarWidth() { return HotBarWidth; }
+    public float getHotbarHeight() { return 100; } //to be changed
     public void Build()
     {
-        if (!_toBuild.cannotBuild)
+        if (!_toBuild.cannotBuild && _toBuild.enoughResource)
         {
-            Instantiate(buildings[selectedSlot], playerT.position + playerT.forward * 2, playerT.rotation)
+            Instantiate(buildings[selectedSlot], playerT.transform.position + playerT.transform.forward * 2, playerT.transform.rotation)
                 .SetAsBuilding();
+            foreach (var r in _toBuild.getRecipe())
+            {
+                playerT.resources[r.Key] -= r.Value;
+            }
+            Destroy(_toBuild.gameObject);
         }
     }
 
@@ -41,7 +52,7 @@ public class BlueprintSystem : MonoBehaviour
     {
         fade = hotBar ? 0f : 1f;
         float slotWidth = slot.GetComponent<RectTransform>().rect.width;
-        float width = buildings.Count * (slotWidth + slotPadding) - slotPadding;
+        HotBarWidth = buildings.Count * (slotWidth + slotPadding) - slotPadding;
 
         for (int i = 0; i < buildings.Count; i++)
         {
@@ -49,7 +60,7 @@ public class BlueprintSystem : MonoBehaviour
             NewObj._buliding = buildings[i];
             slots.Add(NewObj);
             NewObj.GetComponent<RectTransform>().SetParent(transform);
-            NewObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * (slotWidth + slotPadding) - width / 2 + slotWidth / 2, 0f);
+            NewObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * (slotWidth + slotPadding) - HotBarWidth / 2 + slotWidth / 2, 0f);
 
         }
     }
@@ -57,12 +68,18 @@ public class BlueprintSystem : MonoBehaviour
     void Update()
     {
         //update the UI to fit the window
-        float scale = Mathf.Min(Screen.height / 484f, Screen.width / 860f);
+        scale = Mathf.Min(Screen.height / 484f, Screen.width / 860f);
         GetComponent<RectTransform>().localScale = new Vector2(scale, scale);
 
         appear = new Vector2(0f, Screen.height / 484f * 70f);
         disappear = new Vector2(0f, Screen.height / 484f * -50f);
+
+        /*appear = new Vector2(0f, 70f);
+        disappear = new Vector2(0f, -50f);*/
         GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(appear, disappear, _curve.Evaluate(fade / fadeDuration));
+        
+        
+
 
         //for hotbar animation non-functional
         if (!hotBar && fade + Time.deltaTime > fadeDuration)
@@ -106,11 +123,21 @@ public class BlueprintSystem : MonoBehaviour
 
             if (!_toBuild)
             {
-                _toBuild = Instantiate(buildings[selectedSlot], playerT.position + playerT.forward * 2, playerT.rotation);
+                _toBuild = Instantiate(buildings[selectedSlot], playerT.transform.position + playerT.transform.forward * 2, playerT.transform.rotation);
+                _toBuild.enoughResource = true;
+                foreach (var r in _toBuild.getRecipe()){
+                    int k = -1;
+                    playerT.resources.TryGetValue(r.Key, out k);
+                    //Debug.Log(r.Key + ": " + k + " required: " + r.Value);
+                    if (k == -1 || k < r.Value) { 
+                    _toBuild.enoughResource = false;
+                        break;
+                    }
+                }
                 _toBuild.SetAsBlueprint();
             }
             else
-                _toBuild.transform.position = playerT.position + playerT.forward * 2;
+                _toBuild.transform.position = playerT.transform.position + playerT.transform.forward * 2;
             _toBuild.transform.rotation = Quaternion.Euler(0f, playerT.transform.eulerAngles.y, 0f);
 
         }

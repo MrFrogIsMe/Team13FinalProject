@@ -120,22 +120,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fcf0d8ab5aa434c95754cec708b182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  maxHp: 0
+  health: 100
+  maxHealth: 0
   healthBar: {fileID: 763776206009565678}
-  damage: 0
+  attack: 0
   attackCD: 0
   maxSpeed: 0
   force: 0
   drag: 0
   blueprintMat: {fileID: 2100000, guid: a96072a9be5632544a91129d5db4e5f5, type: 2}
   blueprintMatErr: {fileID: 2100000, guid: ee4921544f70dd5458eab54ac422958c, type: 2}
+  blueprintMatGray: {fileID: 2100000, guid: ae6b454e9968342498cd039f11eab784, type: 2}
   buildingMat: {fileID: 2100000, guid: 447ab268871b84107ace984bcd8c2296, type: 2}
   cannotBuild: 0
   isBlueprint: 0
   collisionCount: 0
   MaxHealth: 100
-  health: 100
+  healthPoint: 100
+  resources: []
+  quantity: 
 --- !u!54 &3701419548039697800
 Rigidbody:
   m_ObjectHideFlags: 0

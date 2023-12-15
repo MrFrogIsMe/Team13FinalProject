@@ -72,6 +72,22 @@ PrefabInstance:
       propertyPath: buildingMat
       value: 
       objectReference: {fileID: 2100000, guid: 447ab268871b84107ace984bcd8c2296, type: 2}
+    - target: {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
+      propertyPath: quantity.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
+      propertyPath: resources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
+      propertyPath: quantity.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
+      propertyPath: resources.Array.data[0]
+      value: Tree
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

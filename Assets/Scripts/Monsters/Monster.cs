@@ -6,6 +6,8 @@ public class Monster : Entity
     public Tower tower;
     public Player player;
 
+    public int dropExp;
+
     // the target the monster is currently chasing
     GameObject chaseTarget;
     // keep track of a list of targets in the chase range
@@ -23,8 +25,8 @@ public class Monster : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        hp = maxHp;
-        healthBar.SetMaxHealth(maxHp);
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
         chaseTarget = tower.gameObject;
 
@@ -35,11 +37,11 @@ public class Monster : Entity
     void Update()
     {
         // Check if the monster is alive
-        if (hp <= 0 && gameObject != null)
+        if (health <= 0 && gameObject != null)
         {
-            Destroy(gameObject);
+            Die();
         }
-        
+
         Move();
     }
 
@@ -81,12 +83,18 @@ public class Monster : Entity
         if (attackTarget != null)
         {
             isAttacking = true;
-            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
         else
         {
             isAttacking = false;
         }
+    }
+
+    public override void Die()
+    {
+        ExperienceSystem.Instance.AddExperience(dropExp);
+        Destroy(gameObject);
     }
 
     public void OnChaseTriggerEnter(Collider other)
@@ -221,7 +229,7 @@ public class Monster : Entity
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestTarget= currentTarget;
+                nearestTarget = currentTarget;
             }
         }
 
@@ -260,7 +268,7 @@ public class Monster : Entity
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestTarget= currentTarget;
+                nearestTarget = currentTarget;
             }
         }
 

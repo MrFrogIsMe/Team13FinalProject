@@ -2,10 +2,10 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-    public int hp;
-    public int maxHp;
+    public int health;
+    public int maxHealth;
     public HealthBar healthBar;
-    public int damage;
+    public int attack;
     public float attackCD;
     public float maxSpeed;
     public float force;
@@ -14,11 +14,12 @@ public abstract class Entity : MonoBehaviour
 
     public abstract void Move();
     public abstract void Attack();
+    public abstract void Die();
 
     public void TakeDamage(int damage)
     {
-        hp = hp - damage < 0 ? 0 : hp - damage;
-        healthBar.SetHealth(hp);
+        health = health - damage < 0 ? 0 : health - damage;
+        healthBar.SetHealth(health);
         // print($"Take damage: {damage}, hp: {hp}");
     }
 

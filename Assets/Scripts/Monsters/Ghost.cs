@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Ghost : Entity
 {
@@ -25,11 +23,11 @@ public class Ghost : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 50;
-        hp = maxHp;
-        healthBar.SetMaxHealth(maxHp);
+        maxHealth = 50;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
-        damage = 10;
+        attack = 10;
         attackCD = 0.5f;
         maxSpeed = 5f;
         force = 200f;
@@ -44,9 +42,9 @@ public class Ghost : Entity
     void Update()
     {
         // Check if the monster is alive
-        if (hp <= 0 && gameObject != null)
+        if (health <= 0 && gameObject != null)
         {
-            Destroy(gameObject);
+            Die();
         }
         
         Move();
@@ -91,12 +89,17 @@ public class Ghost : Entity
         {
             Debug.Log(attackTarget);
             isAttacking = true;
-            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
         else
         {
             isAttacking = false;
         }
+    }
+
+    public override void Die()
+    {
+        Destroy(gameObject);
     }
 
     public void OnChaseTriggerEnter(Collider other)
