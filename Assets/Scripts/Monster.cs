@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Skeleton : Entity
+public class Monster : Entity
 {
     public Tower tower;
     public Player player;
@@ -19,26 +19,30 @@ public class Skeleton : Entity
     LinkedList<GameObject> attackList = new LinkedList<GameObject>();
     bool isAttacking = false;
 
+    Animator anim;
+
     void Start()
     {
         tower = FindObjectOfType<Tower>();
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 120;
+        maxHp = 20;
         hp = maxHp;
         healthBar.SetMaxHealth(maxHp);
 
-        damage = 12;
+        damage = 2;
         attackCD = 0.5f;
         maxSpeed = 5f;
-        force = 200f;
+        force = 3000f;
         drag = 2f;
 
         chaseTarget = tower.gameObject;
 
         // Attack() is called every .5 seconds to enhance performance
         InvokeRepeating("Attack", 0f, 0.5f);
+
+        anim = GetComponent<Animator>() ;
     }
 
     void Update()
@@ -69,11 +73,13 @@ public class Skeleton : Entity
         // the monster cannot move while attacking
         if (!isAttacking)
         {
+            anim.SetTrigger("Jump");
             rb.AddForce(transform.forward.normalized * force);
 
             if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
             {
                 rb.velocity = rb.velocity.normalized * maxSpeed;
+                
             }
         }
     }
@@ -85,13 +91,18 @@ public class Skeleton : Entity
         {
             attackTarget = FindNewAttackTarget();
         }
-
+        
         // if there are targets in the chase range
+
         if (attackTarget != null)
         {
             Debug.Log(attackTarget);
+            
             isAttacking = true;
             attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            
+            anim.SetTrigger("Attack");
+            
         }
         else
         {
