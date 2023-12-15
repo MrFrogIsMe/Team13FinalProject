@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Monster : Entity
 {
@@ -25,15 +23,8 @@ public class Monster : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 20;
         hp = maxHp;
         healthBar.SetMaxHealth(maxHp);
-
-        damage = 2;
-        attackCD = 0.5f;
-        maxSpeed = 5f;
-        force = 200f;
-        drag = 2f;
 
         chaseTarget = tower.gameObject;
 
