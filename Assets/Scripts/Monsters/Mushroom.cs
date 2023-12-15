@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Mushroom : Entity
 {
@@ -25,15 +23,8 @@ public class Mushroom : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHealth = 100;
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-
-        attack = 5;
-        attackCD = 0.5f;
-        maxSpeed = 5f;
-        force = 200f;
-        drag = 2f;
 
         chaseTarget = tower.gameObject;
 

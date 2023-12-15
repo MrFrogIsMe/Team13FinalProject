@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Slime : Entity
 {
@@ -27,15 +25,8 @@ public class Slime : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHealth = 20;
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-
-        attack = 2;
-        attackCD = 0.5f;
-        maxSpeed = 5f;
-        force = 200f;
-        drag = 2f;
 
         chaseTarget = tower.gameObject;
 
