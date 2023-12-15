@@ -104,7 +104,7 @@ public class Player : Entity
 
     void LevelUp()
     {
-        attack += 10;
-        health += 10;
+        attack += 5;
+        health += 5;
     }
 }

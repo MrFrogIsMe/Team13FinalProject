@@ -272,13 +272,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 0
-  healthBar: {fileID: 0}
-  attack: 0
-  attackCD: 0
-  maxSpeed: 0
-  force: 0
-  drag: 0
+  maxHealth: 20
+  healthBar: {fileID: 8972588321588122511}
+  attack: 2
+  attackCD: 0.5
+  maxSpeed: 5
+  force: 5000
+  drag: 1
   tower: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &1623952883345292721

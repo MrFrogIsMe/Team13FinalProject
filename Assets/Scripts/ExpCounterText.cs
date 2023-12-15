@@ -11,7 +11,8 @@ public class ExpCounterText : MonoBehaviour
         expCountText = GetComponent<Text>();
         expCountText.text = "exp = 0";
         expCountText.text += "\n";
-        expCountText.text += "lvl = 0";
+        expCountText.text += "lvl = 1";
+
     }
 
     // Update is called once per frame

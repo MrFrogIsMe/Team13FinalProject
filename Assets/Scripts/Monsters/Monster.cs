@@ -19,6 +19,8 @@ public class Monster : Entity
 
     Animator anim;
 
+    public int dropExp;
+
     void Start()
     {
         tower = FindObjectOfType<Tower>();
@@ -32,20 +34,23 @@ public class Monster : Entity
         // Attack() is called every .5 seconds to enhance performance
         InvokeRepeating("Attack", 0f, 0.5f);
 
-        anim = GetComponent<Animator>() ;
+        anim = GetComponent<Animator>();
     }
 
-public override void Die(){
+    public override void Die()
+    {
+        ExperienceSystem.Instance.AddExperience(dropExp);
+        Destroy(gameObject);
+    }
 
-}
     void Update()
     {
         // Check if the monster is alive
         if (health <= 0 && gameObject != null)
         {
-            Destroy(gameObject);
+            Die();
         }
-        
+
         Move();
     }
 
@@ -267,7 +272,7 @@ public override void Die(){
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestTarget= currentTarget;
+                nearestTarget = currentTarget;
             }
         }
 

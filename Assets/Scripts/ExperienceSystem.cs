@@ -7,9 +7,9 @@ public class ExperienceSystem : MonoBehaviour
     public UnityEvent<int> OnExperienceChange;
     public UnityEvent OnLevelChange;
 
-    int exp;
-    int nextLevelExp;
-    int level;
+    public int exp = 0;
+    public int nextLevelExp = 10;
+    public int level = 1;
 
     // Singleton
     void Awake()
@@ -21,15 +21,18 @@ public class ExperienceSystem : MonoBehaviour
         else
         {
             Instance = this;
+            exp = 0;
+            level = 1;
         }
     }
 
     public void AddExperience(int amount)
     {
         exp += amount;
+        print($"exp = {exp}, amount = {amount}, nextLevelExp = {nextLevelExp}");
         if (exp >= nextLevelExp)
         {
-            exp -= nextLevelExp;
+            exp = 0;
             ++level;
             OnLevelChange?.Invoke();
         }
