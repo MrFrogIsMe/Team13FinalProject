@@ -5,9 +5,15 @@ public class Tower : Entity
     void Start()
     {
         this.Setup();
+<<<<<<< HEAD
         health = maxHealth;
         healthBar = this.GetComponentInChildren<HealthBar>();
         healthBar.SetMaxHealth(maxHealth);
+=======
+        hp = maxHp;
+        healthBar = this.GetComponentInChildren<HealthBar>();
+        healthBar.SetMaxHealth(maxHp);
+>>>>>>> test
     }
 
     void Update()

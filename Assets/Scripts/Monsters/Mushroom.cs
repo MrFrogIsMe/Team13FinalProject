@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 using System.Collections.Generic;
 using UnityEngine;
+=======
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+>>>>>>> test
 
 public class Mushroom : Entity
 {
@@ -23,11 +30,19 @@ public class Mushroom : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
+<<<<<<< HEAD
         maxHealth = 100;
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
         attack = 5;
+=======
+        maxHp = 100;
+        hp = maxHp;
+        healthBar.SetMaxHealth(maxHp);
+
+        damage = 5;
+>>>>>>> test
         attackCD = 0.5f;
         maxSpeed = 5f;
         force = 200f;
@@ -42,9 +57,15 @@ public class Mushroom : Entity
     void Update()
     {
         // Check if the monster is alive
+<<<<<<< HEAD
         if (health <= 0 && gameObject != null)
         {
             Die();
+=======
+        if (hp <= 0 && gameObject != null)
+        {
+            Destroy(gameObject);
+>>>>>>> test
         }
         
         Move();
@@ -89,7 +110,11 @@ public class Mushroom : Entity
         {
             Debug.Log(attackTarget);
             isAttacking = true;
+<<<<<<< HEAD
             attackTarget.GetComponent<Entity>().TakeDamage(attack);
+=======
+            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+>>>>>>> test
         }
         else
         {
@@ -97,11 +122,14 @@ public class Mushroom : Entity
         }
     }
 
+<<<<<<< HEAD
     public override void Die()
     {
         Destroy(gameObject);
     }
 
+=======
+>>>>>>> test
     public void OnChaseTriggerEnter(Collider other)
     {
 
@@ -279,4 +307,8 @@ public class Mushroom : Entity
 
         return nearestTarget;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> test

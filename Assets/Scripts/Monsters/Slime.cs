@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 using System.Collections.Generic;
 using UnityEngine;
+=======
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+>>>>>>> test
 
 public class Slime : Entity
 {
@@ -17,17 +24,30 @@ public class Slime : Entity
     LinkedList<GameObject> attackList = new LinkedList<GameObject>();
     bool isAttacking = false;
 
+<<<<<<< HEAD
+=======
+    Animator anim;
+
+>>>>>>> test
     void Start()
     {
         tower = FindObjectOfType<Tower>();
         player = FindObjectOfType<Player>();
         Setup();
 
+<<<<<<< HEAD
         maxHealth = 20;
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
         attack = 2;
+=======
+        maxHp = 20;
+        hp = maxHp;
+        healthBar.SetMaxHealth(maxHp);
+
+        damage = 2;
+>>>>>>> test
         attackCD = 0.5f;
         maxSpeed = 5f;
         force = 200f;
@@ -37,14 +57,25 @@ public class Slime : Entity
 
         // Attack() is called every .5 seconds to enhance performance
         InvokeRepeating("Attack", 0f, 0.5f);
+<<<<<<< HEAD
+=======
+
+        anim = GetComponent<Animator>() ;
+>>>>>>> test
     }
 
     void Update()
     {
         // Check if the monster is alive
+<<<<<<< HEAD
         if (health <= 0 && gameObject != null)
         {
             Die();
+=======
+        if (hp <= 0 && gameObject != null)
+        {
+            Destroy(gameObject);
+>>>>>>> test
         }
         
         Move();
@@ -67,11 +98,19 @@ public class Slime : Entity
         // the monster cannot move while attacking
         if (!isAttacking)
         {
+<<<<<<< HEAD
+=======
+            anim.SetTrigger("Jump");
+>>>>>>> test
             rb.AddForce(transform.forward.normalized * force);
 
             if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
             {
                 rb.velocity = rb.velocity.normalized * maxSpeed;
+<<<<<<< HEAD
+=======
+                
+>>>>>>> test
             }
         }
     }
@@ -83,6 +122,7 @@ public class Slime : Entity
         {
             attackTarget = FindNewAttackTarget();
         }
+<<<<<<< HEAD
 
         // if there are targets in the chase range
         if (attackTarget != null)
@@ -90,6 +130,21 @@ public class Slime : Entity
             Debug.Log(attackTarget);
             isAttacking = true;
             attackTarget.GetComponent<Entity>().TakeDamage(attack);
+=======
+        
+        // if there are targets in the chase range
+
+        if (attackTarget != null)
+        {
+            Debug.Log(attackTarget);
+            
+            isAttacking = true;
+            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            anim.SetTrigger("Attack");
+            
+
+            
+>>>>>>> test
         }
         else
         {
@@ -97,11 +152,14 @@ public class Slime : Entity
         }
     }
 
+<<<<<<< HEAD
     public override void Die()
     {
         Destroy(gameObject);
     }
 
+=======
+>>>>>>> test
     public void OnChaseTriggerEnter(Collider other)
     {
 
@@ -279,4 +337,8 @@ public class Slime : Entity
 
         return nearestTarget;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> test

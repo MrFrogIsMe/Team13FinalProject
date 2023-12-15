@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 using System.Collections.Generic;
 using UnityEngine;
+=======
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+>>>>>>> test
 
 public class Skeleton : Entity
 {
@@ -23,11 +30,19 @@ public class Skeleton : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
+<<<<<<< HEAD
         maxHealth = 120;
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
         attack = 12;
+=======
+        maxHp = 120;
+        hp = maxHp;
+        healthBar.SetMaxHealth(maxHp);
+
+        damage = 12;
+>>>>>>> test
         attackCD = 0.5f;
         maxSpeed = 5f;
         force = 200f;
@@ -42,9 +57,15 @@ public class Skeleton : Entity
     void Update()
     {
         // Check if the monster is alive
+<<<<<<< HEAD
         if (health <= 0 && gameObject != null)
         {
             Die();
+=======
+        if (hp <= 0 && gameObject != null)
+        {
+            Destroy(gameObject);
+>>>>>>> test
         }
         
         Move();
@@ -89,7 +110,11 @@ public class Skeleton : Entity
         {
             Debug.Log(attackTarget);
             isAttacking = true;
+<<<<<<< HEAD
             attackTarget.GetComponent<Entity>().TakeDamage(attack);
+=======
+            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+>>>>>>> test
         }
         else
         {
@@ -97,11 +122,14 @@ public class Skeleton : Entity
         }
     }
 
+<<<<<<< HEAD
     public override void Die()
     {
         Destroy(gameObject);
     }
 
+=======
+>>>>>>> test
     public void OnChaseTriggerEnter(Collider other)
     {
 
@@ -279,4 +307,8 @@ public class Skeleton : Entity
 
         return nearestTarget;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> test

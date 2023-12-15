@@ -6,14 +6,21 @@ public class GameManager : MonoBehaviour
     public Monster monster;
     public Camera mainCamera;
     public BlueprintSystem blueprintSystem;
+<<<<<<< HEAD
     public Inventory inventory;
+=======
+>>>>>>> test
     public bool buildingMode;
     public CollectResourceSystem collectSystem;
     public bool collectMode;
 
     void Start()
     {
+<<<<<<< HEAD
         inventory.setInv(player.resources);
+=======
+        
+>>>>>>> test
     }
 
     void Update()
@@ -21,6 +28,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))    // left-click
         {
             if (buildingMode)
+<<<<<<< HEAD
             {
                 blueprintSystem.Build();
                 inventory.setInv(player.resources);
@@ -30,6 +38,11 @@ public class GameManager : MonoBehaviour
                 collectSystem.Collect();
                 inventory.setInv(player.resources);
             }
+=======
+                blueprintSystem.Build();
+            else if (collectSystem.Collectable())
+                collectSystem.Collect();
+>>>>>>> test
             else
                 player.Attack();
         }
@@ -38,8 +51,11 @@ public class GameManager : MonoBehaviour
         {
             buildingMode = !buildingMode;
             blueprintSystem.ShowHotBar(buildingMode);
+<<<<<<< HEAD
             inventory.ShowInv(buildingMode);
 
+=======
+>>>>>>> test
         }
 
         // Respawn(10f, 10f);

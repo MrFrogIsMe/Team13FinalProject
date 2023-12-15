@@ -1,13 +1,23 @@
+<<<<<<< HEAD
 using System.Collections.Generic;
 using UnityEngine;
+=======
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+>>>>>>> test
 
 public class Monster : Entity
 {
     public Tower tower;
     public Player player;
 
+<<<<<<< HEAD
     public int dropExp;
 
+=======
+>>>>>>> test
     // the target the monster is currently chasing
     GameObject chaseTarget;
     // keep track of a list of targets in the chase range
@@ -19,29 +29,59 @@ public class Monster : Entity
     LinkedList<GameObject> attackList = new LinkedList<GameObject>();
     bool isAttacking = false;
 
+<<<<<<< HEAD
+=======
+    Animator anim;
+
+>>>>>>> test
     void Start()
     {
         tower = FindObjectOfType<Tower>();
         player = FindObjectOfType<Player>();
         Setup();
 
+<<<<<<< HEAD
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+=======
+        maxHp = 20;
+        hp = maxHp;
+        healthBar.SetMaxHealth(maxHp);
+
+        damage = 2;
+        attackCD = 0.5f;
+        maxSpeed = 5f;
+        force = 1500f;
+        drag = 2f;
+>>>>>>> test
 
         chaseTarget = tower.gameObject;
 
         // Attack() is called every .5 seconds to enhance performance
         InvokeRepeating("Attack", 0f, 0.5f);
+<<<<<<< HEAD
+=======
+
+        anim = GetComponent<Animator>() ;
+>>>>>>> test
     }
 
     void Update()
     {
         // Check if the monster is alive
+<<<<<<< HEAD
         if (health <= 0 && gameObject != null)
         {
             Die();
         }
 
+=======
+        if (hp <= 0 && gameObject != null)
+        {
+            Destroy(gameObject);
+        }
+        
+>>>>>>> test
         Move();
     }
 
@@ -63,12 +103,20 @@ public class Monster : Entity
         if (!isAttacking)
         {
             rb.AddForce(transform.forward.normalized * force);
+<<<<<<< HEAD
 
+=======
+            anim.SetTrigger("Jump");
+>>>>>>> test
             if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
             {
                 rb.velocity = rb.velocity.normalized * maxSpeed;
             }
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> test
     }
 
     public override void Attack()
@@ -82,8 +130,14 @@ public class Monster : Entity
         // if there are targets in the chase range
         if (attackTarget != null)
         {
+<<<<<<< HEAD
             isAttacking = true;
             attackTarget.GetComponent<Entity>().TakeDamage(attack);
+=======
+            anim.SetTrigger("Attack");
+            isAttacking = true;
+            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+>>>>>>> test
         }
         else
         {
@@ -91,12 +145,15 @@ public class Monster : Entity
         }
     }
 
+<<<<<<< HEAD
     public override void Die()
     {
         ExperienceSystem.Instance.AddExperience(dropExp);
         Destroy(gameObject);
     }
 
+=======
+>>>>>>> test
     public void OnChaseTriggerEnter(Collider other)
     {
 
@@ -229,7 +286,11 @@ public class Monster : Entity
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
+<<<<<<< HEAD
                 nearestTarget = currentTarget;
+=======
+                nearestTarget= currentTarget;
+>>>>>>> test
             }
         }
 
@@ -268,10 +329,18 @@ public class Monster : Entity
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
+<<<<<<< HEAD
                 nearestTarget = currentTarget;
+=======
+                nearestTarget= currentTarget;
+>>>>>>> test
             }
         }
 
         return nearestTarget;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> test

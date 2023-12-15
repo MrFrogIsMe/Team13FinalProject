@@ -5,6 +5,7 @@ using UnityEngine;
 public class BlueprintSystem : MonoBehaviour
 {
     [Header("Config")]
+<<<<<<< HEAD
     [SerializeField] Player playerT;
     [SerializeField] private Slot slot;
     [SerializeField] private List<Building> buildings;
@@ -19,6 +20,22 @@ public class BlueprintSystem : MonoBehaviour
     [SerializeField] int selectedSlot;
     [SerializeField] private List<Slot> slots;
 
+=======
+    [SerializeField] Transform playerT;
+    [SerializeField] private Slot slot;
+    [SerializeField] private List<Building> buildings;
+
+    [Header("HotbarVisual")]
+    [SerializeField] Color activeColor;
+    [SerializeField] float slotPadding;
+
+    [Header("State")]
+    [SerializeField] private bool hotBar = false;
+    [SerializeField] Building _toBuild;
+    [SerializeField] int selectedSlot;
+    [SerializeField] private List<Slot> slots;
+
+>>>>>>> test
     [Header("HotbarAnimationUtil")]
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] private Vector2 appear;
@@ -26,6 +43,7 @@ public class BlueprintSystem : MonoBehaviour
     [SerializeField] private float fade;
     [SerializeField] private float fadeDuration;
 
+<<<<<<< HEAD
     [Header("HotbarUtil")]
     [SerializeField] private float HotBarWidth;
     [SerializeField] private float scale;
@@ -45,6 +63,16 @@ public class BlueprintSystem : MonoBehaviour
                 playerT.resources[r.Key] -= r.Value;
             }
             Destroy(_toBuild.gameObject);
+=======
+    public bool IsHotBarShown() { return hotBar; }
+    public void ShowHotBar(bool show) { hotBar = show; }
+    public void Build()
+    {
+        if (!_toBuild.cannotBuild)
+        {
+            Instantiate(buildings[selectedSlot], playerT.position + playerT.forward * 2, playerT.rotation)
+                .SetAsBuilding();
+>>>>>>> test
         }
     }
 
@@ -52,7 +80,11 @@ public class BlueprintSystem : MonoBehaviour
     {
         fade = hotBar ? 0f : 1f;
         float slotWidth = slot.GetComponent<RectTransform>().rect.width;
+<<<<<<< HEAD
         HotBarWidth = buildings.Count * (slotWidth + slotPadding) - slotPadding;
+=======
+        float width = buildings.Count * (slotWidth + slotPadding) - slotPadding;
+>>>>>>> test
 
         for (int i = 0; i < buildings.Count; i++)
         {
@@ -60,7 +92,11 @@ public class BlueprintSystem : MonoBehaviour
             NewObj._buliding = buildings[i];
             slots.Add(NewObj);
             NewObj.GetComponent<RectTransform>().SetParent(transform);
+<<<<<<< HEAD
             NewObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * (slotWidth + slotPadding) - HotBarWidth / 2 + slotWidth / 2, 0f);
+=======
+            NewObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * (slotWidth + slotPadding) - width / 2 + slotWidth / 2, 0f);
+>>>>>>> test
 
         }
     }
@@ -68,11 +104,16 @@ public class BlueprintSystem : MonoBehaviour
     void Update()
     {
         //update the UI to fit the window
+<<<<<<< HEAD
         scale = Mathf.Min(Screen.height / 484f, Screen.width / 860f);
+=======
+        float scale = Mathf.Min(Screen.height / 484f, Screen.width / 860f);
+>>>>>>> test
         GetComponent<RectTransform>().localScale = new Vector2(scale, scale);
 
         appear = new Vector2(0f, Screen.height / 484f * 70f);
         disappear = new Vector2(0f, Screen.height / 484f * -50f);
+<<<<<<< HEAD
 
         /*appear = new Vector2(0f, 70f);
         disappear = new Vector2(0f, -50f);*/
@@ -80,6 +121,9 @@ public class BlueprintSystem : MonoBehaviour
         
         
 
+=======
+        GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(appear, disappear, _curve.Evaluate(fade / fadeDuration));
+>>>>>>> test
 
         //for hotbar animation non-functional
         if (!hotBar && fade + Time.deltaTime > fadeDuration)
@@ -123,6 +167,7 @@ public class BlueprintSystem : MonoBehaviour
 
             if (!_toBuild)
             {
+<<<<<<< HEAD
                 _toBuild = Instantiate(buildings[selectedSlot], playerT.transform.position + playerT.transform.forward * 2, playerT.transform.rotation);
                 _toBuild.enoughResource = true;
                 foreach (var r in _toBuild.getRecipe()){
@@ -138,6 +183,13 @@ public class BlueprintSystem : MonoBehaviour
             }
             else
                 _toBuild.transform.position = playerT.transform.position + playerT.transform.forward * 2;
+=======
+                _toBuild = Instantiate(buildings[selectedSlot], playerT.position + playerT.forward * 2, playerT.rotation);
+                _toBuild.SetAsBlueprint();
+            }
+            else
+                _toBuild.transform.position = playerT.position + playerT.forward * 2;
+>>>>>>> test
             _toBuild.transform.rotation = Quaternion.Euler(0f, playerT.transform.eulerAngles.y, 0f);
 
         }

@@ -15,7 +15,11 @@ public class Cannon : Building
         // hp = 100
         setMaxHealth(100);
 
+<<<<<<< HEAD
         attack = 10;
+=======
+        damage = 10;
+>>>>>>> test
         attackCD = 0.5f;
 
         // Attack() is called every .5 seconds to enhance performance
@@ -25,7 +29,11 @@ public class Cannon : Building
     void Update()
     {
         // Check if the monster is alive
+<<<<<<< HEAD
         if (health <= 0 && gameObject != null)
+=======
+        if (hp <= 0 && gameObject != null)
+>>>>>>> test
         {
             Destroy(gameObject);
         }
@@ -49,7 +57,11 @@ public class Cannon : Building
             // rotate towards the target before attacking
             RotateTowardsTarget(attackTarget);
 
+<<<<<<< HEAD
             attackTarget.GetComponent<Entity>().TakeDamage(attack);
+=======
+            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+>>>>>>> test
         }
     }
 
