@@ -27,11 +27,11 @@ public class Slime : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 20;
-        hp = maxHp;
-        healthBar.SetMaxHealth(maxHp);
+        maxHealth = 20;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
-        damage = 2;
+        attack = 2;
         attackCD = 0.5f;
         maxSpeed = 5f;
         force = 200f;
@@ -48,14 +48,16 @@ public class Slime : Entity
     void Update()
     {
         // Check if the monster is alive
-        if (hp <= 0 && gameObject != null)
+        if (health <= 0 && gameObject != null)
         {
             Destroy(gameObject);
         }
         
         Move();
     }
+public override void Die(){
 
+}
     public override void Move()
     {
         // in case the current chase target has been destroyed
@@ -99,7 +101,7 @@ public class Slime : Entity
             Debug.Log(attackTarget);
             
             isAttacking = true;
-            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            attackTarget.GetComponent<Entity>().TakeDamage(attack);
             anim.SetTrigger("Attack");
             
 

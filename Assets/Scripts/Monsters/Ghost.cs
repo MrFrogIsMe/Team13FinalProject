@@ -25,11 +25,11 @@ public class Ghost : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 50;
-        hp = maxHp;
-        healthBar.SetMaxHealth(maxHp);
+        maxHealth = 50;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
-        damage = 10;
+        attack = 10;
         attackCD = 0.5f;
         maxSpeed = 5f;
         force = 200f;
@@ -44,7 +44,7 @@ public class Ghost : Entity
     void Update()
     {
         // Check if the monster is alive
-        if (hp <= 0 && gameObject != null)
+        if (health <= 0 && gameObject != null)
         {
             Destroy(gameObject);
         }
@@ -52,6 +52,9 @@ public class Ghost : Entity
         Move();
     }
 
+public override void Die(){
+
+}
     public override void Move()
     {
         // in case the current chase target has been destroyed
@@ -91,7 +94,7 @@ public class Ghost : Entity
         {
             Debug.Log(attackTarget);
             isAttacking = true;
-            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
         else
         {

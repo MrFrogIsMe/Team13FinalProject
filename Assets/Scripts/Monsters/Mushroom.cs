@@ -25,11 +25,11 @@ public class Mushroom : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 100;
-        hp = maxHp;
-        healthBar.SetMaxHealth(maxHp);
+        maxHealth = 100;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
-        damage = 5;
+        attack = 5;
         attackCD = 0.5f;
         maxSpeed = 5f;
         force = 200f;
@@ -41,10 +41,13 @@ public class Mushroom : Entity
         InvokeRepeating("Attack", 0f, 0.5f);
     }
 
+public override void Die(){
+
+}
     void Update()
     {
         // Check if the monster is alive
-        if (hp <= 0 && gameObject != null)
+        if (health <= 0 && gameObject != null)
         {
             Destroy(gameObject);
         }
@@ -91,7 +94,7 @@ public class Mushroom : Entity
         {
             Debug.Log(attackTarget);
             isAttacking = true;
-            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
         else
         {

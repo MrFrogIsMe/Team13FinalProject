@@ -19,7 +19,7 @@ public class BlueprintSystem : MonoBehaviour
     [SerializeField] private bool hotBar = false;
     [SerializeField] Building _toBuild;
     [SerializeField] int selectedSlot;
-    [SerializeField] private List<Slot> slots;
+    private List<Slot> slots;
 
     [Header("HotbarAnimationUtil")]
     [SerializeField] private AnimationCurve _curve;
@@ -63,6 +63,7 @@ public class BlueprintSystem : MonoBehaviour
 
     void Start()
     {
+        slots = new List<Slot>{};
         fade = hotBar ? 0f : 1f;
         float slotWidth = slot.GetComponent<RectTransform>().rect.width;
         HotBarWidth = buildings.Count * (slotWidth + slotPadding) - slotPadding;

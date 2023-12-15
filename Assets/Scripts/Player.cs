@@ -91,29 +91,15 @@ public class Player : Entity
         Debug.Log("GameOver : Player Died");
     }
 
-    void TrackMouseRotation()
-    {
-        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-        Plane ground = new Plane(Vector3.up, Vector3.zero);
-        float rayLength;
-
-        if (ground.Raycast(cameraRay, out rayLength))
-        {
-            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
-            this.transform.LookAt(new Vector3(pointToLook.x, this.transform.position.y, pointToLook.z));
-        }
-    }
-
     /* Experience System */
     void OnEnable()
     {
-        ExperienceSystem.Instance.OnLevelChange.AddListener(LevelUp);
+        //ExperienceSystem.Instance.OnLevelChange.AddListener(LevelUp);
     }
 
     void OnDisable()
     {
-        ExperienceSystem.Instance.OnLevelChange.RemoveListener(LevelUp);
+        //ExperienceSystem.Instance.OnLevelChange.RemoveListener(LevelUp);
     }
 
     void LevelUp()
