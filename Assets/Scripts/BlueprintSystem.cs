@@ -32,6 +32,8 @@ public class BlueprintSystem : MonoBehaviour
     [SerializeField] private float HotBarWidth;
     [SerializeField] private float scale;
 
+    const float playerGroundCoor = -0.02f;
+
     public bool IsHotBarShown() { return hotBar; }
     public void ShowHotBar(bool show) { hotBar = show; }
     public float getHotbarWidth() { return HotBarWidth; }
@@ -41,7 +43,7 @@ public class BlueprintSystem : MonoBehaviour
         if (!_toBuild.cannotBuild && _toBuild.enoughResource)
         {
             Vector3 position = playerT.transform.position + playerT.transform.forward * 2;
-            position.y = buildings[selectedSlot].getGroundCoor();
+            position.y = playerT.transform.position.y + buildings[selectedSlot].getGroundCoor() - playerGroundCoor;
 
             Quaternion rotation = Quaternion.Euler(
                 buildings[selectedSlot].transform.eulerAngles.x, 
@@ -133,7 +135,7 @@ public class BlueprintSystem : MonoBehaviour
             }
 
             Vector3 position = playerT.transform.position + playerT.transform.forward * 2;
-            position.y = buildings[selectedSlot].getGroundCoor();
+            position.y = playerT.transform.position.y + buildings[selectedSlot].getGroundCoor() - playerGroundCoor;
 
             Quaternion rotation = Quaternion.Euler(
                 buildings[selectedSlot].transform.eulerAngles.x,
