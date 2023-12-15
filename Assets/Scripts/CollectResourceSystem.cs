@@ -15,7 +15,7 @@ public class CollectResourceSystem : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        UpdateResourceText();
+        //UpdateResourceText();
     }
 
     void Update()
@@ -81,15 +81,15 @@ public class CollectResourceSystem : MonoBehaviour
         resource.Collect();
         player.resources[resource.resourceType] += 1;
 
-        UpdateResourceText();
+        //UpdateResourceText();
     }
-
-    void UpdateResourceText()
+    
+    /*void UpdateResourceText()
     {
         resourceCnt.text = "";
         foreach (var resource in player.resources)
         {
             resourceCnt.text += resource.Key + " x " + resource.Value.ToString() + "\n";
         }
-    }
+    }*/
 }
