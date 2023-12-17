@@ -17,7 +17,7 @@ public class Monster : Entity
     GameObject attackTarget;
     // keep track of a list of targets in the attack range
     LinkedList<GameObject> attackList = new LinkedList<GameObject>();
-    bool isAttacking = false;
+    bool isAttacking;
 
     Animator anim;
 
@@ -36,6 +36,8 @@ public class Monster : Entity
         maxSpeed = 5f;
         force = 2500f;
         drag = 2f;
+
+        isAttacking = false;
 
         chaseTarget = tower.gameObject;
 

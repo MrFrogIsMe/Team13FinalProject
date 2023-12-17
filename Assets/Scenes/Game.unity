@@ -271,9 +271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
-  cooldown: 5
-  count: 0
-  enableSpawning: 1
   monsters: {fileID: 1063971060}
 --- !u!4 &52852662 stripped
 Transform:
@@ -2754,8 +2751,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 851323185}
-  - component: {fileID: 851323184}
   - component: {fileID: 851323186}
+  - component: {fileID: 851323187}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2763,25 +2760,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &851323184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851323183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bda0787bf66943d289792adec6c018e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1538766381}
-  monster: {fileID: 0}
-  mainCamera: {fileID: 963194227}
-  blueprintSystem: {fileID: 760965376}
-  buildingMode: 0
-  collectSystem: {fileID: 851323186}
-  collectMode: 0
 --- !u!4 &851323185
 Transform:
   m_ObjectHideFlags: 0
@@ -2811,6 +2789,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceCnt: {fileID: 1767588192}
   maxDist: 2
+--- !u!114 &851323187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851323183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bda0787bf66943d289792adec6c018e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1538766381}
+  spawnPoints:
+  - {fileID: 2090219986}
+  - {fileID: 1508916884}
+  - {fileID: 45225587}
+  - {fileID: 1155059423}
+  - {fileID: 2108474978}
+  mainCamera: {fileID: 0}
+  blueprintSystem: {fileID: 0}
+  buildingMode: 0
+  collectSystem: {fileID: 0}
+  collectMode: 0
+  monsterAmount: 020000000400000005000000
+  spawnCD:
+  - 5
+  - 3
+  - 4
+  Time:
+  - 40
+  - 60
+  - 100
 --- !u!1001 &868630685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3433,9 +3444,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
-  cooldown: 5
-  count: 0
-  enableSpawning: 1
   monsters: {fileID: 1063971060}
 --- !u!1001 &1155532198
 PrefabInstance:
@@ -4756,9 +4764,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
-  cooldown: 5
-  count: 0
-  enableSpawning: 1
   monsters: {fileID: 1063971060}
 --- !u!4 &1508916885
 Transform:
@@ -5999,9 +6004,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
-  cooldown: 5
-  count: 0
-  enableSpawning: 1
   monsters: {fileID: 1063971060}
 --- !u!4 &2090219987
 Transform:
@@ -6063,9 +6065,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
-  cooldown: 5
-  count: 0
-  enableSpawning: 1
   monsters: {fileID: 1063971060}
 --- !u!4 &2124100740 stripped
 Transform:
