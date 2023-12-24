@@ -20,12 +20,12 @@ TagManager:
   - Water
   - UI
   - Fireball
-  - EnemyChildrenCollider
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Building
+  - Tower
+  - EnemyChase
+  - EnemyAttack
   - 
   - 
   - 

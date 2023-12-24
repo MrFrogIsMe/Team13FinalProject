@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Monster : Entity
 {
@@ -21,38 +19,38 @@ public class Monster : Entity
 
     Animator anim;
 
+    public int dropExp;
+
     void Start()
     {
         tower = FindObjectOfType<Tower>();
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 20;
-        hp = maxHp;
-        healthBar.SetMaxHealth(maxHp);
-
-        damage = 2;
-        attackCD = 0.5f;
-        maxSpeed = 5f;
-        force = 1500f;
-        drag = 2f;
-
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         chaseTarget = tower.gameObject;
 
         // Attack() is called every .5 seconds to enhance performance
         InvokeRepeating("Attack", 0f, 0.5f);
 
-        anim = GetComponent<Animator>() ;
+        anim = GetComponent<Animator>();
     }
 
-    void Update()
+    public override void Die()
+    {
+        ExperienceSystem.Instance.AddExperience(dropExp);
+        Destroy(gameObject);
+    }
+
+    void FixedUpdate()
     {
         // Check if the monster is alive
-        if (hp <= 0 && gameObject != null)
+        if (health <= 0 && gameObject != null)
         {
-            Destroy(gameObject);
+            Die();
         }
-        
+
         Move();
     }
 
@@ -80,7 +78,6 @@ public class Monster : Entity
                 rb.velocity = rb.velocity.normalized * maxSpeed;
             }
         }
-
     }
 
     public override void Attack()
@@ -96,7 +93,7 @@ public class Monster : Entity
         {
             anim.SetTrigger("Attack");
             isAttacking = true;
-            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
         else
         {
@@ -236,7 +233,7 @@ public class Monster : Entity
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestTarget= currentTarget;
+                nearestTarget = currentTarget;
             }
         }
 
@@ -275,7 +272,7 @@ public class Monster : Entity
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestTarget= currentTarget;
+                nearestTarget = currentTarget;
             }
         }
 

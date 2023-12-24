@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Mushroom : Entity
 {
@@ -25,15 +23,8 @@ public class Mushroom : Entity
         player = FindObjectOfType<Player>();
         Setup();
 
-        maxHp = 100;
-        hp = maxHp;
-        healthBar.SetMaxHealth(maxHp);
-
-        damage = 5;
-        attackCD = 0.5f;
-        maxSpeed = 5f;
-        force = 200f;
-        drag = 2f;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
         chaseTarget = tower.gameObject;
 
@@ -41,10 +32,13 @@ public class Mushroom : Entity
         InvokeRepeating("Attack", 0f, 0.5f);
     }
 
+public override void Die(){
+
+}
     void Update()
     {
         // Check if the monster is alive
-        if (hp <= 0 && gameObject != null)
+        if (health <= 0 && gameObject != null)
         {
             Destroy(gameObject);
         }
@@ -91,7 +85,7 @@ public class Mushroom : Entity
         {
             Debug.Log(attackTarget);
             isAttacking = true;
-            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
         else
         {
