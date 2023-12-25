@@ -94,12 +94,12 @@ public class Player : Entity
     /* Experience System */
     void OnEnable()
     {
-        //ExperienceSystem.Instance.OnLevelChange.AddListener(LevelUp);
+        ExperienceSystem.Instance.OnLevelChange.AddListener(LevelUp);
     }
 
     void OnDisable()
     {
-        //ExperienceSystem.Instance.OnLevelChange.RemoveListener(LevelUp);
+        ExperienceSystem.Instance.OnLevelChange.RemoveListener(LevelUp);
     }
 
     void LevelUp()
