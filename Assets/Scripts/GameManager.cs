@@ -12,18 +12,9 @@ public class GameManager : MonoBehaviour
     public bool collectMode;
 
     int round;
-    public const int maxRound = 3;
-    // the amount of monsters spawn in each spawn point for each round
-    public int[] monsterAmount = new int[maxRound];
-    // the cooldown for monster spawning for each round
-    public float[] spawnCD = new float[maxRound];
-    // the time length for each round
-    public float[] Time = new float[maxRound];
 
     void Start()
     {
-        round = 0;
-
         StartCoroutine(RoundManager());
     }
 
@@ -55,19 +46,32 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RoundManager()
     {
-        while (round < maxRound)
+        // round 0
+        round = 0;
+        Debug.Log("Round " + round);
+
+        for (int i = 0; i < 5; i++)
         {
-            Debug.Log("Round " + round);
-
-            // 5 spawn points
-            for (int i = 0; i < 5; i++)
-            {
-                spawnPoints[i].SpawnMonsters(monsterAmount[round], spawnCD[round]);
-            }
-
-            yield return new WaitForSeconds(Time[round]);
-
-            round++;
+            // (type, num, cd)
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
         }
+
+        yield return new WaitForSeconds(40);
+
+        // round 1
+        round = 1;
+        Debug.Log("Round " + round);
+
+        // 5 spawn points
+        for (int i = 0; i < 5; i++)
+        {
+            // (type, num, cd)
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+
+        yield return new WaitForSeconds(60);
+
+        Debug.Log("Time's up");
     }
 }

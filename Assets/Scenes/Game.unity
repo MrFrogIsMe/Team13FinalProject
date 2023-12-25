@@ -2809,9 +2809,9 @@ MonoBehaviour:
   - {fileID: 1155059423}
   - {fileID: 2108474978}
   mainCamera: {fileID: 0}
-  blueprintSystem: {fileID: 0}
+  blueprintSystem: {fileID: 760965376}
   buildingMode: 0
-  collectSystem: {fileID: 0}
+  collectSystem: {fileID: 851323186}
   collectMode: 0
   monsterAmount: 020000000400000005000000
   spawnCD:
