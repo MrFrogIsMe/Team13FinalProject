@@ -57,9 +57,10 @@ public class Monster : Entity
     public override void Move()
     {
         // in case the current chase target has been destroyed
+        chaseTarget = FindNewChaseTarget();
         if (chaseTarget == null)
         {
-            chaseTarget = FindNewChaseTarget();
+            return;
         }
 
         Vector3 direction = chaseTarget.transform.position - transform.position;
@@ -85,25 +86,21 @@ public class Monster : Entity
         // in case the current attack target has been destroyed
         if (attackTarget == null)
         {
+            isAttacking = false;
             attackTarget = FindNewAttackTarget();
         }
 
         // if there are targets in the chase range
-        if (attackTarget != null)
+        else
         {
             anim.SetTrigger("Attack");
             isAttacking = true;
             attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
-        else
-        {
-            isAttacking = false;
-        }
     }
 
     public void OnChaseTriggerEnter(Collider other)
     {
-
         if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Tower"))
         {
             if (other.gameObject.CompareTag("Building"))
@@ -146,11 +143,6 @@ public class Monster : Entity
             }
 
             chaseList.Remove(other.gameObject);
-
-            if (other.gameObject == chaseTarget)
-            {
-                chaseTarget = FindNewChaseTarget();
-            }
         }
     }
 
@@ -235,6 +227,8 @@ public class Monster : Entity
                 nearestDistance = distance;
                 nearestTarget = currentTarget;
             }
+
+            currentNode = currentNode.Next;
         }
 
         // return tower if no buildings or player are in the chase range
@@ -274,6 +268,7 @@ public class Monster : Entity
                 nearestDistance = distance;
                 nearestTarget = currentTarget;
             }
+            currentNode = currentNode.Next;
         }
 
         return nearestTarget;
