@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -12,9 +13,22 @@ public class GameManager : MonoBehaviour
     public bool collectMode;
 
     int round;
+    float timeRemaining;
+    Action[] roundFunctions;
+    float[] roundTime;
 
     void Start()
     {
+        roundFunctions = new Action[]
+        {
+            RoundZero, RoundOne
+        };
+
+        roundTime = new float[]
+        {
+            20, 40
+        };
+
         StartCoroutine(RoundManager());
     }
 
@@ -46,32 +60,41 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RoundManager()
     {
-        // round 0
-        round = 0;
-        Debug.Log("Round " + round);
+        int round = 0;
 
+        while (round < 2)
+        {
+            Debug.Log("Round: " + round);
+
+            // invoke corresponding function for each round
+            roundFunctions[round]?.Invoke();
+
+            // countdown
+            timeRemaining = roundTime[round];
+            while (timeRemaining > 0)
+            {
+                yield return new WaitForSeconds(1);
+                timeRemaining -= 1;
+            }
+
+            round++;
+        }
+    }
+
+    void RoundZero()
+    {
         for (int i = 0; i < 5; i++)
         {
-            // (type, num, cd)
             spawnPoints[i].SpawnMonsters(0, 2, 5);
         }
+    }
 
-        yield return new WaitForSeconds(40);
-
-        // round 1
-        round = 1;
-        Debug.Log("Round " + round);
-
-        // 5 spawn points
+    void RoundOne()
+    {
         for (int i = 0; i < 5; i++)
         {
-            // (type, num, cd)
             spawnPoints[i].SpawnMonsters(0, 2, 5);
             spawnPoints[i].SpawnMonsters(1, 1, 0);
         }
-
-        yield return new WaitForSeconds(60);
-
-        Debug.Log("Time's up");
     }
 }
