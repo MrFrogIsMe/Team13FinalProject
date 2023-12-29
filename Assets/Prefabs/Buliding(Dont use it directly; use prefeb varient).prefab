@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 0
+  maxHealth: 100
   healthBar: {fileID: 763776206009565678}
   attack: 0
   attackCD: 0
@@ -137,8 +137,6 @@ MonoBehaviour:
   enoughResource: 0
   isBlueprint: 0
   collisionCount: 0
-  MaxHealth: 100
-  healthPoint: 100
   resources: []
   quantity: 
 --- !u!54 &3701419548039697800
@@ -166,7 +164,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!1001 &2241852605812149543
 PrefabInstance:

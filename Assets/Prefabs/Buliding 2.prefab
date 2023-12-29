@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3701419548039697800, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
     - target: {fileID: 3890830886417874519, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -167,6 +171,10 @@ PrefabInstance:
     - target: {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
       propertyPath: ground
       value: -0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
+      propertyPath: maxHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8855634356039085958, guid: 81f9f9e3088b59440a48f987f4f7eefe, type: 3}
       propertyPath: buildingMat
