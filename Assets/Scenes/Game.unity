@@ -270,7 +270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0c235613c7c43b2a647c6e8670c0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
+  MonsterPrefabs:
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
   monsters: {fileID: 1063971060}
 --- !u!4 &52852662 stripped
 Transform:
@@ -2813,15 +2815,6 @@ MonoBehaviour:
   buildingMode: 0
   collectSystem: {fileID: 851323186}
   collectMode: 0
-  monsterAmount: 020000000400000005000000
-  spawnCD:
-  - 5
-  - 3
-  - 4
-  Time:
-  - 40
-  - 60
-  - 100
 --- !u!1001 &868630685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3443,7 +3436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0c235613c7c43b2a647c6e8670c0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
+  MonsterPrefabs:
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
   monsters: {fileID: 1063971060}
 --- !u!1001 &1155532198
 PrefabInstance:
@@ -4763,7 +4758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0c235613c7c43b2a647c6e8670c0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
+  MonsterPrefabs:
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
   monsters: {fileID: 1063971060}
 --- !u!4 &1508916885
 Transform:
@@ -6003,7 +6000,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0c235613c7c43b2a647c6e8670c0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
+  MonsterPrefabs:
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
   monsters: {fileID: 1063971060}
 --- !u!4 &2090219987
 Transform:
@@ -6064,7 +6063,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0c235613c7c43b2a647c6e8670c0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
+  MonsterPrefabs:
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
   monsters: {fileID: 1063971060}
 --- !u!4 &2124100740 stripped
 Transform:
