@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public MonsterSpawn[] spawnPoints = new MonsterSpawn[5];
     public Camera mainCamera;
     public BlueprintSystem blueprintSystem;
+    public Inventory inventory;
     public bool buildingMode;
     public CollectResourceSystem collectSystem;
     public bool collectMode;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        inventory.setInv(player.resources);
         round = 0;
 
         StartCoroutine(RoundManager());
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
             if (buildingMode)
             {
                 blueprintSystem.Build();
+                inventory.setInv(player.resources);
             }
             else if (collectSystem.Collectable())
             {
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
         {
             buildingMode = !buildingMode;
             blueprintSystem.ShowHotBar(buildingMode);
+            inventory.ShowInv(buildingMode);
         }
 
     }

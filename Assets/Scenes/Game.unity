@@ -3036,6 +3036,7 @@ MonoBehaviour:
   - {fileID: 403430706}
   mainCamera: {fileID: 963194227}
   blueprintSystem: {fileID: 760965376}
+  inventory: {fileID: 816768754}
   buildingMode: 0
   collectSystem: {fileID: 851323186}
   collectMode: 0
@@ -5747,7 +5748,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9336f6411b9b36409bc07f712828e58, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fe1b58c480164a85953cf8336dbeae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1868279087 stripped
