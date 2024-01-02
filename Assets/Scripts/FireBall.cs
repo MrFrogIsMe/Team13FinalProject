@@ -9,6 +9,7 @@ public class FireBall : MonoBehaviour
 
 
     public GameObject ExplosionPrefab;
+    public DamageNum damageNum;
     Rigidbody rb;
 
     void Awake()
@@ -36,6 +37,8 @@ public class FireBall : MonoBehaviour
         {
             // print($"{other.gameObject}");
             other.GetComponent<Monster>().TakeDamage(damage);
+            Instantiate(damageNum, this.transform.position, Quaternion.identity)
+                .setNumber(damage);
 
             // print($"{other.name}.hp = {other.GetComponent<Entity>().hp}");
         }
