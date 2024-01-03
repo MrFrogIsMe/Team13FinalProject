@@ -1386,8 +1386,8 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 4fb2a6d99effe5e4ea6ff64c0af87583, type: 3}
   m_Controller: {fileID: 9100000, guid: f5f12b77f7c0d634c97459e0f1f87e83, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1403,7 +1403,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179894}
   serializedVersion: 4
-  m_Mass: 50
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1461,11 +1461,12 @@ MonoBehaviour:
   attack: 10
   attackCD: 1
   maxSpeed: 10
-  force: 20000
+  force: 200
   drag: 1
   fireballSpawnpoint: {fileID: 2235371746855343494}
   fireballTemplate: {fileID: 6959992403720280990, guid: df4c6c15c18f2c745b14b91ff6206ba9, type: 3}
   inv: {fileID: 0}
+  speed: 0
 --- !u!1 &181522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,6 +1853,7 @@ MonoBehaviour:
   state: 0
   attackRadius: 2.5
   attack: 5
+  attackCount: 2
 --- !u!1001 &8020182643045646301
 PrefabInstance:
   m_ObjectHideFlags: 0
