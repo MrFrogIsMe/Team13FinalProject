@@ -7,6 +7,8 @@ public class GroundFire : Ability
     public int attackCount = 2;
     CapsuleCollider attackCollider;
     float attackTimer = 0;
+
+    public GameObject ExplosionPrefab;
     public GameObject GroundFirePrefab;
 
     private GameObject GroundF;
@@ -41,6 +43,7 @@ public class GroundFire : Ability
 
         if (other.CompareTag("Monster"))
         {
+
             if (attackTimer > 0)
             {
                 attackTimer -= Time.deltaTime;
@@ -48,6 +51,7 @@ public class GroundFire : Ability
             else
             {
                 other.GetComponent<Monster>().TakeDamage(attack);
+                Instantiate(ExplosionPrefab, other.transform.position,this.transform.rotation);
                 attackTimer = activeTime / 4;
             }
         }
