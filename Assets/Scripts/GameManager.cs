@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     public bool buildingMode;
     public CollectResourceSystem collectSystem;
     public bool collectMode;
+    public string[] scenes = { "Scene1", "Scene2", "Scene3" };
+    public int currentScene = 0;
 
     int round;
     float timeRemaining;
@@ -58,6 +61,15 @@ public class GameManager : MonoBehaviour
             blueprintSystem.ShowHotBar(buildingMode);
         }
 
+    }
+
+    public void SceneManager()
+    {
+        if (currentScene < sceneNames.Length)
+        {
+            SceneManager.LoadScene(sceneNames[currentSceneIndex]);
+            currentSceneIndex++;
+        }
     }
 
     IEnumerator RoundManager()
