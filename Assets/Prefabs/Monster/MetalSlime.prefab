@@ -555,7 +555,7 @@ MonoBehaviour:
   attack: 10
   attackCD: 0.5
   maxSpeed: 5
-  force: 350
+  force: 500
   drag: 1
   tower: {fileID: 0}
   player: {fileID: 0}
@@ -657,7 +657,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6745280637937030341}
         m_TargetAssemblyTypeName: Monster, Assembly-CSharp
         m_MethodName: OnChaseTriggerEnter
         m_Mode: 0
@@ -675,9 +675,9 @@ MonoBehaviour:
   onTriggerExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6745280637937030341}
         m_TargetAssemblyTypeName: Monster, Assembly-CSharp
-        m_MethodName: OnAttackTriggerExit
+        m_MethodName: OnChaseTriggerExit
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -846,7 +846,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6745280637937030341}
         m_TargetAssemblyTypeName: Monster, Assembly-CSharp
         m_MethodName: OnAttackTriggerEnter
         m_Mode: 0
@@ -864,7 +864,7 @@ MonoBehaviour:
   onTriggerExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6745280637937030341}
         m_TargetAssemblyTypeName: Monster, Assembly-CSharp
         m_MethodName: OnAttackTriggerExit
         m_Mode: 0
