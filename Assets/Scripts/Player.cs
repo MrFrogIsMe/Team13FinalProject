@@ -70,6 +70,12 @@ public class Player : Entity
         anim.SetTrigger("attack");
     }
 
+    public override void TakeDamage(int damage)
+    {
+        health = health - damage < 0 ? 0 : health - damage;
+        healthBar.SetHealth(health);
+    }
+
     void TrackMouseRotation()
     {
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);

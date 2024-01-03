@@ -643,7 +643,7 @@ MonoBehaviour:
   attack: 1
   attackCD: 0.5
   maxSpeed: 10
-  force: 500
+  force: 50
   tower: {fileID: 0}
   player: {fileID: 0}
   chaseTarget: {fileID: 0}

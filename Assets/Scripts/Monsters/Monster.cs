@@ -46,15 +46,20 @@ public class Monster : Entity
         Destroy(gameObject);
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        Move();
+
         // Check if the monster is alive
         if (health <= 0 && gameObject != null)
         {
             Die();
         }
+    }
 
-        Move();
+    void FixedUpdate()
+    {
+        rb.AddForce(transform.forward.normalized * force);
     }
 
     public override void Move()
@@ -68,18 +73,19 @@ public class Monster : Entity
 
         Vector3 direction = chaseTarget.transform.position - transform.position;
         direction.y = 0f;
-        transform.forward = direction;
+        transform.forward = direction.normalized;
 
         rb.velocity = Vector3.zero;
 
         // the monster cannot move while attacking
         if (!isAttacking && !isFreezing)
         {
-            rb.AddForce(transform.forward.normalized * force, ForceMode.Acceleration);
             anim.SetTrigger("Jump");
-            if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
+            Vector3 flatVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            if (flatVel.magnitude >= maxSpeed)
             {
-                rb.velocity = rb.velocity.normalized * maxSpeed;
+                Vector3 limitedVel = flatVel.normalized * maxSpeed;
+                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
             }
         }
     }
@@ -100,6 +106,12 @@ public class Monster : Entity
             isAttacking = true;
             attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        health = health - damage < 0 ? 0 : health - damage;
+        healthBar.SetHealth(health);
     }
 
     public void OnChaseTriggerEnter(Collider other)

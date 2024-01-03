@@ -277,13 +277,13 @@ MonoBehaviour:
   attack: 20
   attackCD: 0.5
   maxSpeed: 5
-  force: 500
+  force: 50
   tower: {fileID: 0}
   player: {fileID: 0}
   chaseTarget: {fileID: 0}
   attackTarget: {fileID: 0}
   isFreezing: 0
-  dropExp: 2
+  dropExp: 10
 --- !u!1 &1623952883345292721
 GameObject:
   m_ObjectHideFlags: 0
