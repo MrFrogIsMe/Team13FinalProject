@@ -24,26 +24,19 @@ public class GameManager : MonoBehaviour
 
     public Wave_Counter waveCounter;
     int round;
-    public const int maxRound = 3;
-    // the amount of monsters spawn in each spawn point for each round
-    public int[] monsterAmount = new int[maxRound];
-    // the cooldown for monster spawning for each round
-    public float[] spawnCD = new float[maxRound];
-    // the time length for each round
-    public float[] Time = new float[maxRound];
 
     void Start()
     {
         roundFunctions = new Action[]
         {
             RoundZero, RoundOne, RoundTwo, RoundThree, RoundFour,
-            RoundFive, RoundSix, RoundSeven, RoundEight, RoundNine
+            RoundFive, RoundSix, RoundSeven, RoundEight, RoundNine, RoundTen
         };
 
         roundTime = new float[]
         {
             20, 40, 40, 40, 40,
-            40, 40, 40, 40, 40
+            40, 40, 40, 40, 40, 40
         };
         inventory.setInv(player.resources);
         round = 0;
@@ -114,7 +107,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            // spawnPoints[i].SpawnMonsters(0, 2, 5);
         }
     }
 
@@ -123,7 +116,6 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             spawnPoints[i].SpawnMonsters(0, 2, 5);
-            spawnPoints[i].SpawnMonsters(1, 1, 0);
         }
     }
 
@@ -131,8 +123,8 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnPoints[i].SpawnMonsters(0, 2, 5);
-            spawnPoints[i].SpawnMonsters(1, 1, 0);
+            spawnPoints[i].SpawnMonsters(0, 3, 3);
+            spawnPoints[i].SpawnMonsters(1, 1, 1);
         }
     }
 
@@ -140,8 +132,9 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnPoints[i].SpawnMonsters(0, 2, 5);
-            spawnPoints[i].SpawnMonsters(1, 1, 0);
+            spawnPoints[i].SpawnMonsters(0, 2, 2);
+            spawnPoints[i].SpawnMonsters(1, 2, 3);
+            spawnPoints[i].SpawnMonsters(2, 1, 5);
         }
     }
 
@@ -149,8 +142,9 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnPoints[i].SpawnMonsters(0, 2, 5);
-            spawnPoints[i].SpawnMonsters(1, 1, 0);
+            spawnPoints[i].SpawnMonsters(1, 2, 3);
+            spawnPoints[i].SpawnMonsters(2, 2, 4);
+            spawnPoints[i].SpawnMonsters(3, 2, 5);
         }
     }
 
@@ -158,17 +152,19 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnPoints[i].SpawnMonsters(0, 2, 5);
-            spawnPoints[i].SpawnMonsters(1, 1, 0);
+            spawnPoints[i].SpawnMonsters(1, 2, 2);
+            spawnPoints[i].SpawnMonsters(2, 2, 4);
+            spawnPoints[i].SpawnMonsters(3, 2, 5);
         }
+        spawnPoints[0].SpawnMonsters(4, 1, 1);
     }
 
     void RoundSix()
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnPoints[i].SpawnMonsters(0, 2, 5);
-            spawnPoints[i].SpawnMonsters(1, 1, 0);
+            spawnPoints[i].SpawnMonsters(0, 5, 1);
+            spawnPoints[i].SpawnMonsters(5, 1, 1);
         }
     }
 
@@ -176,8 +172,8 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnPoints[i].SpawnMonsters(0, 2, 5);
-            spawnPoints[i].SpawnMonsters(1, 1, 0);
+            spawnPoints[i].SpawnMonsters(5, 3, 3);
+            spawnPoints[i].SpawnMonsters(6, 1, 1);
         }
     }
 
@@ -185,8 +181,9 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnPoints[i].SpawnMonsters(0, 2, 5);
-            spawnPoints[i].SpawnMonsters(1, 1, 0);
+            spawnPoints[i].SpawnMonsters(2, 3, 4);
+            spawnPoints[i].SpawnMonsters(3, 3, 3);
+            spawnPoints[i].SpawnMonsters(4, 1, 5);
         }
     }
 
@@ -194,8 +191,18 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnPoints[i].SpawnMonsters(0, 2, 5);
-            spawnPoints[i].SpawnMonsters(1, 1, 0);
+            spawnPoints[i].SpawnMonsters(5, 2, 3);
+            spawnPoints[i].SpawnMonsters(6, 3, 5);
         }
+    }
+
+    void RoundTen()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(5, 2, 3);
+            spawnPoints[i].SpawnMonsters(6, 2, 5);
+        }
+        spawnPoints[0].SpawnMonsters(7, 1, 1);
     }
 }

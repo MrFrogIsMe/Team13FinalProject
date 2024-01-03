@@ -44,8 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0c235613c7c43b2a647c6e8670c0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
-  cooldown: 10
-  count: 0
-  enableSpawning: 1
+  MonsterPrefabs:
+  - {fileID: 5118616772412399736, guid: d206c2882a2655b4186e3b5c26b4db80, type: 3}
+  - {fileID: 393554180970727890, guid: 6b97e9798fda0074d9c72f52cecff9c7, type: 3}
+  - {fileID: 3363476197880141233, guid: d84922d1fea4b6c4db7a15f961a6b7ff, type: 3}
+  - {fileID: 6581808178439027645, guid: 44a679b8bfc0c324199550f512027b53, type: 3}
+  - {fileID: 6313797131504239423, guid: e35f870080f5b0c4ca4457e054c508e8, type: 3}
+  - {fileID: 5833823014950136989, guid: 706a80a2ed1f6f24fa27851c9a6c1af6, type: 3}
+  - {fileID: 3148550448374343084, guid: 3b44c4306343fba48aa102ef6c9392db, type: 3}
+  - {fileID: 873531700701352353, guid: b59860514e09c324a8ebcd4c37ad15c6, type: 3}
   monsters: {fileID: 0}

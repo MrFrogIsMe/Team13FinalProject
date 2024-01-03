@@ -79,7 +79,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 7041247217792885728}
   m_HandleRect: {fileID: 0}
@@ -534,6 +534,7 @@ Transform:
   m_Children:
   - {fileID: 6073242822727269148}
   - {fileID: 6521909869425259874}
+  - {fileID: 8724184868556698000}
   m_Father: {fileID: 577127637521299182}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2989261386773508320
@@ -794,8 +795,8 @@ GameObject:
   - component: {fileID: 1852489282085066510}
   - component: {fileID: 521281926991979470}
   m_Layer: 0
-  m_Name: Slime_03 King 1
-  m_TagString: Untagged
+  m_Name: GKingSlime
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -810,12 +811,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 577127637521299182}
   - {fileID: 6335533132454437650}
-  - {fileID: 8724184868556698000}
   - {fileID: 2697643472702470161}
   - {fileID: 4724048448414642684}
   - {fileID: 2916398428724716232}
@@ -878,11 +878,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6313797131504239423}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: eb340672e17c0af4089e561b61cdc548, type: 3}
+  m_Controller: {fileID: 9100000, guid: 58fb1ef3ea7e8284789abf6570acf341, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -903,16 +903,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 0
+  maxHealth: 1000
   healthBar: {fileID: 0}
-  attack: 0
-  attackCD: 0
-  maxSpeed: 0
-  force: 0
+  attack: 10
+  attackCD: 0.5
+  maxSpeed: 5
+  force: 500
   drag: 0
   tower: {fileID: 0}
   player: {fileID: 0}
-  dropExp: 0
+  dropExp: 3000
 --- !u!1 &6443387585009348227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,7 +1210,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5404528666598782660}
+    m_TransformParent: {fileID: 7941641856490035487}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
       propertyPath: m_RootOrder
@@ -1222,19 +1222,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 0.70000005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.50000006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.008
+      value: -0.007999993
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.63566804
+      value: 0.6356678
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1250,11 +1250,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00000012648606
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.07631635
+      value: 0.07631634
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

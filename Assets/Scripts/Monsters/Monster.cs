@@ -72,7 +72,7 @@ public class Monster : Entity
         // the monster cannot move while attacking
         if (!isAttacking)
         {
-            rb.AddForce(transform.forward.normalized * force);
+            rb.AddForce(transform.forward.normalized * force, ForceMode.Acceleration);
             anim.SetTrigger("Jump");
             if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
             {

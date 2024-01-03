@@ -79,7 +79,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 2174901152146730832}
   m_HandleRect: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 6634506598366233145}
   m_Layer: 0
   m_Name: VikingSlime
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -452,8 +452,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3148550448374343084}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: eb340672e17c0af4089e561b61cdc548, type: 3}
+  m_Controller: {fileID: 9100000, guid: 58fb1ef3ea7e8284789abf6570acf341, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -525,16 +525,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 0
+  maxHealth: 500
   healthBar: {fileID: 0}
-  attack: 0
-  attackCD: 0
-  maxSpeed: 0
-  force: 0
+  attack: 8
+  attackCD: 0.5
+  maxSpeed: 5
+  force: 400
   drag: 0
   tower: {fileID: 0}
   player: {fileID: 0}
-  dropExp: 0
+  dropExp: 500
 --- !u!1 &3318218881021551736
 GameObject:
   m_ObjectHideFlags: 0

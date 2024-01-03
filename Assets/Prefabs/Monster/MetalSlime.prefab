@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 4941840636056729532}
   - component: {fileID: 6745280637937030341}
   m_Layer: 0
-  m_Name: MeltalHelmetSlime
+  m_Name: MetalSlime
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -518,7 +518,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5833823014950136989}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -549,17 +549,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e932352dad4847a7bc412d29312d32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
-  maxHealth: 10
+  health: 0
+  maxHealth: 300
   healthBar: {fileID: 0}
-  attack: 3
-  attackCD: 1
-  maxSpeed: 10
-  force: 300
+  attack: 10
+  attackCD: 0.5
+  maxSpeed: 5
+  force: 350
   drag: 1
   tower: {fileID: 0}
   player: {fileID: 0}
-  dropExp: 5
+  dropExp: 500
 --- !u!1 &6479816737043948610
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,7 +955,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 3307016497425186491}
   m_HandleRect: {fileID: 0}

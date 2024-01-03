@@ -459,7 +459,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1738577400747960970}
   m_HandleRect: {fileID: 0}
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 6026636892113889170}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -606,7 +606,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5118616772412399736}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -638,16 +638,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  maxHealth: 10
+  maxHealth: 20
   healthBar: {fileID: 4346589926563506374}
   attack: 1
-  attackCD: 1
+  attackCD: 0.5
   maxSpeed: 10
-  force: 5000
+  force: 500
   drag: 1
   tower: {fileID: 0}
   player: {fileID: 0}
-  dropExp: 1
+  dropExp: 50
 --- !u!1 &5683925513187633542
 GameObject:
   m_ObjectHideFlags: 0

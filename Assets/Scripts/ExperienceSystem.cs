@@ -9,7 +9,7 @@ public class ExperienceSystem : MonoBehaviour
     public expBar expBar;
 
     public int exp = 0;
-    public int nextLevelExp = 10;
+    public int nextLevelExp = 100;
     public int level = 1;
 
     // Singleton
@@ -32,10 +32,11 @@ public class ExperienceSystem : MonoBehaviour
     {
         exp += amount;
         print($"exp = {exp}, amount = {amount}, nextLevelExp = {nextLevelExp}");
-        if (exp >= nextLevelExp)
+        while (exp >= nextLevelExp)
         {
-            exp = exp - nextLevelExp;
+            exp -= nextLevelExp;
             ++level;
+            nextLevelExp = (int)(nextLevelExp * 1.2f);
             OnLevelChange?.Invoke();
             expBar.setLevel(level, nextLevelExp);
         }
