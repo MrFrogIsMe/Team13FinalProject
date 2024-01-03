@@ -17,6 +17,9 @@ public class Monster : Entity
     LinkedList<GameObject> attackList = new LinkedList<GameObject>();
     bool isAttacking = false;
 
+    [HideInInspector]
+    public bool isFreezing = false;
+
     Animator anim;
 
     public int dropExp;
@@ -70,7 +73,7 @@ public class Monster : Entity
         rb.velocity = Vector3.zero;
 
         // the monster cannot move while attacking
-        if (!isAttacking)
+        if (!isAttacking && !isFreezing)
         {
             rb.AddForce(transform.forward.normalized * force);
             anim.SetTrigger("Jump");
