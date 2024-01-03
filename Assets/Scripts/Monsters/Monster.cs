@@ -7,15 +7,18 @@ public class Monster : Entity
     public Player player;
 
     // the target the monster is currently chasing
-    GameObject chaseTarget;
+    public GameObject chaseTarget;
     // keep track of a list of targets in the chase range
     LinkedList<GameObject> chaseList = new LinkedList<GameObject>();
 
     // the target the monster is currently attacking
-    GameObject attackTarget;
+    public GameObject attackTarget;
     // keep track of a list of targets in the attack range
     LinkedList<GameObject> attackList = new LinkedList<GameObject>();
     bool isAttacking = false;
+
+    [HideInInspector]
+    public bool isFreezing = false;
 
     Animator anim;
 
@@ -70,7 +73,7 @@ public class Monster : Entity
         rb.velocity = Vector3.zero;
 
         // the monster cannot move while attacking
-        if (!isAttacking)
+        if (!isAttacking && !isFreezing)
         {
             rb.AddForce(transform.forward.normalized * force, ForceMode.Acceleration);
             anim.SetTrigger("Jump");

@@ -24,11 +24,8 @@ public class Player : Entity
         resources.Add("Stone", 0);
     }
 
-    void FixedUpdate()
+    void Update()
     {
-
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        float moveVertical = Input.GetAxisRaw("Vertical");
         this.Move();
         this.TrackMouseRotation();
 
@@ -39,25 +36,27 @@ public class Player : Entity
 
     }
 
-    public override void Move()
+    void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
-
         Vector3 direction = new Vector3(moveHorizontal, 0f, moveVertical);
-
-        // Move by adding force
-        // use sqrMagnitude to increace performance
         rb.AddForce(direction.normalized * force);
-        if(direction.normalized * force!=new Vector3(0f, 0f, 0f)){
+    }
+
+    public override void Move()
+    {
+        if(rb.velocity != Vector3.zero){
             anim.SetBool("run",true);
         }else{
             anim.SetBool("run",false);
         }
         
-        if (rb.velocity.sqrMagnitude > maxSpeed * maxSpeed)
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        if (flatVel.magnitude >= maxSpeed)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed * Time.deltaTime;
+            Vector3 limitedVel = flatVel.normalized * maxSpeed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
 

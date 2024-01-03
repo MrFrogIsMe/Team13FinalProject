@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7073997445264454057}
   - component: {fileID: 6295678770712560605}
   - component: {fileID: 5892132273091306493}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5087350902560047764}
   - component: {fileID: 1977520811134892558}
   - component: {fileID: 4793784545272677635}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: -2986327240533068396}
   - component: {fileID: 4280722576546482264}
   - component: {fileID: -391534697502557635}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: KingSlime
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -281,7 +281,9 @@ MonoBehaviour:
   drag: 1
   tower: {fileID: 0}
   player: {fileID: 0}
-  dropExp: 0
+  chaseTarget: {fileID: 0}
+  attackTarget: {fileID: 0}
+  dropExp: 2
 --- !u!1 &1623952883345292721
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +296,7 @@ GameObject:
   - component: {fileID: 5525565233947674012}
   - component: {fileID: 8140447074943409357}
   - component: {fileID: 3226999504904910099}
-  m_Layer: 11
+  m_Layer: 3
   m_Name: chaseCollider
   m_TagString: chaseCollider
   m_Icon: {fileID: 0}
@@ -420,7 +422,7 @@ GameObject:
   - component: {fileID: 664349898610105461}
   - component: {fileID: 1441124405366510465}
   - component: {fileID: 3098772146577319608}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: HealthbarContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +558,7 @@ GameObject:
   - component: {fileID: 432449003452405645}
   - component: {fileID: 1024690331961066408}
   - component: {fileID: 983232051267188369}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3175312543014260292}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bone.003_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2670655120731963238}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bone.003_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3222055237194596979}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bone.003_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +788,7 @@ GameObject:
   - component: {fileID: 8838804090055555141}
   - component: {fileID: 7087427977254799308}
   - component: {fileID: 8972588321588122511}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -899,7 +901,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 787358118064465505}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bone.003_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5925414060475628767}
   - component: {fileID: 1875645275194409195}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slime_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6021738969730251511}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1052,7 +1054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2156295224627675165}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,7 +1091,7 @@ GameObject:
   - component: {fileID: 8116776814881719328}
   - component: {fileID: 2339409811260501639}
   - component: {fileID: 8422408086796876543}
-  m_Layer: 12
+  m_Layer: 3
   m_Name: attackCollider
   m_TagString: attackCollider
   m_Icon: {fileID: 0}
@@ -1259,6 +1261,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
       propertyPath: m_Name
       value: Crown
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f9934f54349dc2489d80b0298740ae5, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

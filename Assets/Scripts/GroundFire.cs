@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class GroundFire : Ability
 {
+    Player player;
+
     public float attackRadius = 2.5f;
     public int attack = 5;
+    public int attackCount = 2;
     CapsuleCollider attackCollider;
     float attackTimer = 0;
     public GameObject GroundFirePrefab;
@@ -11,6 +14,11 @@ public class GroundFire : Ability
     public Transform player;
 
     private GameObject GroundF;
+
+    void Start() 
+    {
+        player = FindObjectOfType<Player>();
+    }
 
     public override void Activate()
     {
