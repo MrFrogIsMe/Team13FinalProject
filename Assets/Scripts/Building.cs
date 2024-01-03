@@ -17,40 +17,43 @@ public class Building : Entity
     [SerializeField] private bool isBlueprint;
     [SerializeField] private int collisionCount;
 
-    [Header("Buliding Stat")]
-    [SerializeField] float MaxHealth = 100;
-    [SerializeField] float healthPoint = 100;
-
     [Header("Recipe")]
     [SerializeField] List<String> resources;
     [SerializeField] List<int> quantity;
 
-    public Dictionary<String, int> getRecipe() { 
-        Dictionary<String,int> rep = new Dictionary<String, int>();
-        for (int i = 0; i < resources.Count; i++) {
-                rep.Add(resources[i], quantity[i]);
+    public Dictionary<String, int> getRecipe()
+    {
+        Dictionary<String, int> rep = new Dictionary<String, int>();
+        for (int i = 0; i < resources.Count; i++)
+        {
+            rep.Add(resources[i], quantity[i]);
         }
         return rep;
     }
 
-    public float getGroundCoor() { 
+    public float getGroundCoor()
+    {
         return ground;
     }
 
     void Start()
     {
-        healthBar.SetMaxHealth((int)MaxHealth);
+        healthBar.SetMaxHealth(maxHealth);
         collisionCount = 0;
 
         int r = resources.Count;
         int q = quantity.Count;
-        if (r != q) {
-            if (r > q) {
-                for (int i = q - 1; i < r; i++) {
+        if (r != q)
+        {
+            if (r > q)
+            {
+                for (int i = q - 1; i < r; i++)
+                {
                     quantity.Add(0);
                 }
             }
-            else {
+            else
+            {
                 for (int i = r - 1; i < q; i++)
                 {
                     resources.Add("Resource");
@@ -59,26 +62,47 @@ public class Building : Entity
         }
     }
 
-    public override void Move() { }
-    public override void Attack() { }
-    public override void Die() { }
-
-
-    public void setMaxHealth(float hp)
+    void Update()
     {
-        MaxHealth = hp;
-        healthPoint = hp;
-        healthBar.SetMaxHealth((int)hp);
+        print(health);
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
-    void setHealth(float hp)
+    public override void Move() { }
+    public override void Attack() { }
+
+    public override void TakeDamage(int damage)
     {
-        healthPoint = hp >= MaxHealth ? MaxHealth : hp;
+        health -= damage;
+        health = (health > 0) ? health : 0;
+        healthBar.SetHealth(health);
+    }
+
+    public override void Die()
+    {
+        Destroy(this.gameObject);
+    }
+
+
+    public void setMaxHealth(int hp)
+    {
+        maxHealth = hp;
+        health = hp;
+        healthBar.SetMaxHealth(hp);
+    }
+
+    void setHealth(int hp)
+    {
+        health = hp >= maxHealth ? maxHealth : hp;
     }
 
     public void SetAsBlueprint()
     {
         isBlueprint = true;
+        this.gameObject.layer = LayerMask.NameToLayer("Blueprint");
         GetComponent<Collider>().isTrigger = true;
         //Debug.Log(enoughResource);
         GetComponent<MeshRenderer>().material = enoughResource ? blueprintMat : blueprintMatGray;
@@ -86,6 +110,7 @@ public class Building : Entity
     public void SetAsBuilding()
     {
         isBlueprint = false;
+        this.gameObject.layer = LayerMask.NameToLayer("Building");
         GetComponent<Collider>().isTrigger = false;
         GetComponent<MeshRenderer>().material = buildingMat;
     }

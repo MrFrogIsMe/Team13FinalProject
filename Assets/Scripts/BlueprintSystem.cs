@@ -30,7 +30,7 @@ public class BlueprintSystem : MonoBehaviour
     [SerializeField] private float HotBarWidth;
     [SerializeField] private float scale;
 
-    const float playerGroundCoor = -0.02f;
+    const float playerGroundCoor = -1.5f;
 
     public bool IsHotBarShown() { return hotBar; }
     public void ShowHotBar(bool show) { hotBar = show; }

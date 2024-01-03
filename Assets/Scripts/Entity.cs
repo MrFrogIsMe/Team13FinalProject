@@ -16,7 +16,7 @@ public abstract class Entity : MonoBehaviour
     public abstract void Attack();
     public abstract void Die();
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         health = health - damage < 0 ? 0 : health - damage;
         healthBar.SetHealth(health);

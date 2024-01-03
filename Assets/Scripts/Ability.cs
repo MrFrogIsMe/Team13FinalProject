@@ -10,8 +10,13 @@ public class Ability : MonoBehaviour
     float currCooldownTime;
     public float activeTime;
     float currActiveTime;
-
+    
+    public Sprite abilityImage;
     public AbilityState state = AbilityState.ready;
+
+    public int getCurrCooldownTime() {
+        return (int)currCooldownTime;
+    }
 
     void Update()
     {

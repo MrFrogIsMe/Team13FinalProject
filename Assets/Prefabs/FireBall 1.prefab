@@ -9658,3 +9658,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   ExplosionPrefab: {fileID: 1892078723244562, guid: 9d277d0d7cd58f34b86ccbddf53d0952, type: 3}
+  damageNum: {fileID: -286766439641356198, guid: bb53bbf061e983248abbfb0384fd1605, type: 3}
