@@ -15,7 +15,7 @@ public class Cannon : Building
         // hp = 100
         setMaxHealth(100);
 
-        damage = 10;
+        attack = 10;
         attackCD = 0.5f;
 
         // Attack() is called every .5 seconds to enhance performance
@@ -25,7 +25,7 @@ public class Cannon : Building
     void Update()
     {
         // Check if the monster is alive
-        if (hp <= 0 && gameObject != null)
+        if (health <= 0 && gameObject != null)
         {
             Destroy(gameObject);
         }
@@ -49,7 +49,7 @@ public class Cannon : Building
             // rotate towards the target before attacking
             RotateTowardsTarget(attackTarget);
 
-            attackTarget.GetComponent<Entity>().TakeDamage(damage);
+            attackTarget.GetComponent<Entity>().TakeDamage(attack);
         }
     }
 
@@ -64,7 +64,7 @@ public class Cannon : Building
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Monster"))
+        if(other.gameObject.CompareTag("Enemy"))
         {
             attackList.AddLast(other.gameObject);
 
@@ -77,7 +77,7 @@ public class Cannon : Building
 
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.CompareTag("Monster"))
+        if(other.gameObject.CompareTag("Enemy"))
         {
             attackList.Remove(other.gameObject);
 

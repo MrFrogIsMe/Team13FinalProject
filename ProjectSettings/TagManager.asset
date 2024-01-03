@@ -16,17 +16,17 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - Fireball
-  - EnemyChildrenCollider
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Blueprint
+  - Player
+  - Building
+  - Tower
+  - EnemyChase
+  - EnemyAttack
+  - AbilityHitBox
   - 
   - 
   - 
