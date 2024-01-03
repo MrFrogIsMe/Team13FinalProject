@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     Action[] roundFunctions;
     float[] roundTime;
 
+    public Wave_Counter waveCounter;
     int round;
     public const int maxRound = 3;
     // the amount of monsters spawn in each spawn point for each round
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
                 timeRemaining -= 1;
             }
             round++;
+            waveCounter.setNum(round);
         }
     }
 
