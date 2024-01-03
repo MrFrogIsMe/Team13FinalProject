@@ -1,5 +1,8 @@
-using UnityEngine;
+using System;
 using System.Collections;
+using UnityEngine;
+// using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +15,12 @@ public class GameManager : MonoBehaviour
     public bool buildingMode;
     public CollectResourceSystem collectSystem;
     public bool collectMode;
+    public string[] scenes = { "Scene1", "Scene2", "Scene3" };
+    public int currentScene = 0;
+
+    float timeRemaining;
+    Action[] roundFunctions;
+    float[] roundTime;
 
     int round;
     public const int maxRound = 3;
@@ -24,6 +33,17 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        roundFunctions = new Action[]
+        {
+            RoundZero, RoundOne, RoundTwo, RoundThree, RoundFour,
+            RoundFive, RoundSix, RoundSeven, RoundEight, RoundNine
+        };
+
+        roundTime = new float[]
+        {
+            20, 40, 40, 40, 40,
+            40, 40, 40, 40, 40
+        };
         inventory.setInv(player.resources);
         round = 0;
 
@@ -60,21 +80,120 @@ public class GameManager : MonoBehaviour
 
     }
 
+//     public void SceneManager()
+//     {
+//         if (currentScene < scenes.Length)
+//         {
+//             SceneManager.LoadScene(scenes[currentScene]);
+//             currentScene++;
+//         }
+//     }
+
     IEnumerator RoundManager()
     {
-        while (round < maxRound)
+        while (round < 10)
         {
             Debug.Log("Round " + round);
+            // invoke corresponding function for each round
+            roundFunctions[round]?.Invoke();
 
-            // 5 spawn points
-            for (int i = 0; i < 5; i++)
+            // countdown
+            timeRemaining = roundTime[round];
+            while (timeRemaining > 0)
             {
-                spawnPoints[i].SpawnMonsters(monsterAmount[round], spawnCD[round]);
+                yield return new WaitForSeconds(1);
+                timeRemaining -= 1;
             }
-
-            yield return new WaitForSeconds(Time[round]);
-
             round++;
+        }
+    }
+
+    void RoundZero()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+        }
+    }
+
+    void RoundOne()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundTwo()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundThree()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundFour()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundFive()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundSix()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundSeven()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundEight()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundNine()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
         }
     }
 }
