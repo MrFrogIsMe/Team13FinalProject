@@ -21,12 +21,14 @@ public class GameManager : MonoBehaviour
     {
         roundFunctions = new Action[]
         {
-            RoundZero, RoundOne
+            RoundZero, RoundOne, RoundTwo, RoundThree, RoundFour,
+            RoundFive, RoundSix, RoundSeven, RoundEight, RoundNine
         };
 
         roundTime = new float[]
         {
-            20, 40
+            20, 40, 40, 40, 40,
+            40, 40, 40, 40, 40
         };
 
         StartCoroutine(RoundManager());
@@ -62,7 +64,7 @@ public class GameManager : MonoBehaviour
     {
         int round = 0;
 
-        while (round < 2)
+        while (round < 10)
         {
             Debug.Log("Round: " + round);
 
@@ -90,6 +92,78 @@ public class GameManager : MonoBehaviour
     }
 
     void RoundOne()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundTwo()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundThree()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundFour()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundFive()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundSix()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundSeven()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundEight()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(1, 1, 0);
+        }
+    }
+
+    void RoundNine()
     {
         for (int i = 0; i < 5; i++)
         {
