@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
             {
                 //blueprintSystem.Build();
                 //inventory.setInv(player.resources);
+                player.Attack();
             }
             else if (collectSystem.Collectable())
             {
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
         {
             buildingMode = !buildingMode;
             //blueprintSystem.ShowHotBar(buildingMode);
-            AbilitySystem.ShowHotBar(buildingMode);
+            //AbilitySystem.ShowHotBar(buildingMode);
             inventory.ShowInv(buildingMode);
         }
 
