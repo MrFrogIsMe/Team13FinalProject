@@ -790,9 +790,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5404528666598782660}
+  - component: {fileID: 1852489282085066510}
   - component: {fileID: 4058040556427221868}
   - component: {fileID: 8630800540791956599}
-  - component: {fileID: 1852489282085066510}
   - component: {fileID: 521281926991979470}
   m_Layer: 0
   m_Name: GKingSlime
@@ -821,6 +821,27 @@ Transform:
   - {fileID: 2916398428724716232}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1852489282085066510
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313797131504239423}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: eb340672e17c0af4089e561b61cdc548, type: 3}
+  m_Controller: {fileID: 9100000, guid: 58fb1ef3ea7e8284789abf6570acf341, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!135 &4058040556427221868
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -869,27 +890,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &1852489282085066510
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6313797131504239423}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: eb340672e17c0af4089e561b61cdc548, type: 3}
-  m_Controller: {fileID: 9100000, guid: 58fb1ef3ea7e8284789abf6570acf341, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 1
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &521281926991979470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,9 +909,11 @@ MonoBehaviour:
   attackCD: 0.5
   maxSpeed: 5
   force: 500
-  drag: 0
   tower: {fileID: 0}
   player: {fileID: 0}
+  chaseTarget: {fileID: 0}
+  attackTarget: {fileID: 0}
+  isFreezing: 0
   dropExp: 3000
 --- !u!1 &6443387585009348227
 GameObject:

@@ -1344,9 +1344,9 @@ GameObject:
   m_Component:
   - component: {fileID: 487646}
   - component: {fileID: 9530184}
-  - component: {fileID: 6935614620771062932}
   - component: {fileID: 3703291066417088180}
   - component: {fileID: 4832102922092649664}
+  - component: {fileID: 5973231303598459935}
   m_Layer: 8
   m_Name: ChaWitch
   m_TagString: Player
@@ -1395,33 +1395,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!54 &6935614620771062932
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179894}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!65 &3703291066417088180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1462,11 +1435,36 @@ MonoBehaviour:
   attackCD: 1
   maxSpeed: 10
   force: 200
-  drag: 1
   fireballSpawnpoint: {fileID: 2235371746855343494}
   fireballTemplate: {fileID: 6959992403720280990, guid: df4c6c15c18f2c745b14b91ff6206ba9, type: 3}
   inv: {fileID: 0}
-  speed: 0
+--- !u!54 &5973231303598459935
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179894}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 5
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &181522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,9 +1732,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Freeze
-  key: 49
+  key: 50
   cooldownTime: 10
   activeTime: 5
+  abilityImage: {fileID: 0}
   state: 0
 --- !u!1 &2007302097573017078
 GameObject:
@@ -1847,13 +1846,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: GroundPound
-  key: 304
+  key: 49
   cooldownTime: 10
   activeTime: 4
+  abilityImage: {fileID: 0}
   state: 0
   attackRadius: 2.5
   attack: 5
   attackCount: 2
+  GroundFirePrefab: {fileID: 1727626132299242, guid: bd61921faae5e0b43a789350e460a99c, type: 3}
 --- !u!1001 &8020182643045646301
 PrefabInstance:
   m_ObjectHideFlags: 0

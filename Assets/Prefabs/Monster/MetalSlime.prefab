@@ -479,8 +479,8 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: eb340672e17c0af4089e561b61cdc548, type: 3}
   m_Controller: {fileID: 9100000, guid: 58fb1ef3ea7e8284789abf6570acf341, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
+  m_CullingMode: 1
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -556,9 +556,11 @@ MonoBehaviour:
   attackCD: 0.5
   maxSpeed: 5
   force: 500
-  drag: 1
   tower: {fileID: 0}
   player: {fileID: 0}
+  chaseTarget: {fileID: 0}
+  attackTarget: {fileID: 0}
+  isFreezing: 0
   dropExp: 500
 --- !u!1 &6479816737043948610
 GameObject:

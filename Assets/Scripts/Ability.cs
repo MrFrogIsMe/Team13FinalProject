@@ -4,6 +4,10 @@ public enum AbilityState { ready, active, cooldown }
 
 public class Ability : MonoBehaviour
 {
+    protected Player player;
+    protected Transform tf;
+    protected Rigidbody rb;
+
     public new string name;
     public KeyCode key;
     public float cooldownTime;
@@ -16,6 +20,13 @@ public class Ability : MonoBehaviour
 
     public int getCurrCooldownTime() {
         return (int)currCooldownTime;
+    }
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        tf = player.GetComponent<Transform>();
+        rb = player.GetComponent<Rigidbody>();
     }
 
     void Update()
