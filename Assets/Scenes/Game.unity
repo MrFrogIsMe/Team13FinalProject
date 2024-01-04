@@ -422,6 +422,7 @@ MonoBehaviour:
   abilities:
   - {fileID: 977311012}
   - {fileID: 44135750}
+  - {fileID: 2073621985}
   fallbackImage: {fileID: 21300006, guid: 32dde075fa5f86d458327a2ac0c4593b, type: 3}
   slotPadding: 0
   hotBar: 1
@@ -5456,6 +5457,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9cc5585b9634a9449920c03ec6bc243, type: 3}
+--- !u!114 &2073621985 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 993838520947511116, guid: 33cf96e7c28302643ace35c3d203f5e0, type: 3}
+  m_PrefabInstance: {fileID: 1423426959}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adeabec624b1148688c8d8356408f650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2090219987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6392735213876952571, guid: 4e2efff55ff804e80a576c1faaa1d720, type: 3}
