@@ -1434,7 +1434,7 @@ MonoBehaviour:
   attack: 10
   attackCD: 1
   maxSpeed: 10
-  force: 200
+  groundDrag: 5
   fireballSpawnpoint: {fileID: 2235371746855343494}
   fireballTemplate: {fileID: 6959992403720280990, guid: df4c6c15c18f2c745b14b91ff6206ba9, type: 3}
   inv: {fileID: 0}
@@ -1854,6 +1854,7 @@ MonoBehaviour:
   attackRadius: 2.5
   attack: 5
   attackCount: 2
+  ExplosionPrefab: {fileID: 1892078723244562, guid: 9d277d0d7cd58f34b86ccbddf53d0952, type: 3}
   GroundFirePrefab: {fileID: 1727626132299242, guid: bd61921faae5e0b43a789350e460a99c, type: 3}
 --- !u!1001 &8020182643045646301
 PrefabInstance:

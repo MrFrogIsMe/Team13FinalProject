@@ -59,7 +59,8 @@ public class Monster : Entity
 
     void FixedUpdate()
     {
-        rb.AddForce(transform.forward.normalized * force);
+        if (!isAttacking && !isFreezing)
+            rb.AddForce(transform.forward.normalized * maxSpeed * 5f);
     }
 
     public override void Move()
@@ -75,8 +76,6 @@ public class Monster : Entity
         direction.y = 0f;
         transform.forward = direction.normalized;
 
-        rb.velocity = Vector3.zero;
-
         // the monster cannot move while attacking
         if (!isAttacking && !isFreezing)
         {
@@ -88,6 +87,17 @@ public class Monster : Entity
                 rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
             }
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
+
+        float groundCheckDistance = GetComponent<SphereCollider>().radius / 2 + 0.2f;
+        bool grounded = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, groundCheckDistance);
+        if (grounded)
+            rb.drag = groundDrag;
+        else
+            rb.drag = 0;
     }
 
     public override void Attack()
@@ -100,7 +110,7 @@ public class Monster : Entity
         }
 
         // if there are targets in the chase range
-        else
+        else if (!isFreezing)
         {
             anim.SetTrigger("Attack");
             isAttacking = true;
@@ -242,7 +252,6 @@ public class Monster : Entity
                 nearestDistance = distance;
                 nearestTarget = currentTarget;
             }
-
             currentNode = currentNode.Next;
         }
 

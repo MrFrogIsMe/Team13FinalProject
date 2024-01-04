@@ -519,7 +519,7 @@ Rigidbody:
   m_GameObject: {fileID: 5833823014950136989}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -535,7 +535,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &6745280637937030341
 MonoBehaviour:
@@ -555,7 +555,7 @@ MonoBehaviour:
   attack: 10
   attackCD: 0.5
   maxSpeed: 5
-  force: 50
+  groundDrag: 5
   tower: {fileID: 0}
   player: {fileID: 0}
   chaseTarget: {fileID: 0}

@@ -41,7 +41,7 @@ public class Player : Entity
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(moveHorizontal, 0f, moveVertical);
-        rb.AddForce(direction.normalized * force);
+        rb.AddForce(direction.normalized * maxSpeed *  5f);
     }
 
     public override void Move()
@@ -58,6 +58,13 @@ public class Player : Entity
             Vector3 limitedVel = flatVel.normalized * maxSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+
+        float groundCheckDistance = GetComponent<BoxCollider>().size.y / 2 + 0.2f;
+        bool grounded = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, groundCheckDistance);
+        if (grounded)
+            rb.drag = groundDrag;
+        else
+            rb.drag = 0;
     }
 
     public override void Attack()
