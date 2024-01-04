@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Tower : Entity
 {
     void Start()
@@ -15,7 +15,7 @@ public class Tower : Entity
         if (health <= 0)
         {
             // game over
-            Debug.Log("Game Over");
+            SceneManager.LoadScene("Over");
         }
     }
 
@@ -25,6 +25,7 @@ public class Tower : Entity
 
     public override void Die() 
     {
+        
         print("GameOver : Tower Is Down!");
     }
 }
