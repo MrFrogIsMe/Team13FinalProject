@@ -1903,9 +1903,9 @@ MonoBehaviour:
   activeTime: 4
   abilityImage: {fileID: 0}
   state: 0
-  attackRadius: 2.5
+  attackRadius: 3.5
   attack: 5
-  attackCount: 2
+  attackCount: 4
   ExplosionPrefab: {fileID: 1892078723244562, guid: 9d277d0d7cd58f34b86ccbddf53d0952, type: 3}
   GroundFirePrefab: {fileID: 1727626132299242, guid: bd61921faae5e0b43a789350e460a99c, type: 3}
 --- !u!1001 &8020182643045646301
