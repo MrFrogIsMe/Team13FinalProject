@@ -269,9 +269,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0425de2460b438d83ff4e9d94bef9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  damage: 0
-  speed: 0
+  health: 0
+  maxHealth: 0
+  healthBar: {fileID: 0}
+  attack: 0
+  attackCD: 0
+  maxSpeed: 0
+  force: 0
+  drag: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,11 +521,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128fdb9d0b03b46fbb7297ae4ade4061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  damage: 0
-  speed: 0
+  health: 0
+  maxHealth: 0
+  healthBar: {fileID: 0}
+  attack: 0
+  attackCD: 0
+  maxSpeed: 0
+  force: 0
+  drag: 0
   fireballSpawnpoint: {fileID: 2000911104}
   fireballTemplate: {fileID: 4488034320295896516, guid: 761359829e8a24e9a86b16d8f10d3311, type: 3}
+  inv: {fileID: 0}
+  speed: 0
 --- !u!1 &851323183
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,8 +563,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 772666385}
-  monster: {fileID: 4025819058907448828, guid: e38a953c73a794bce850e35f3ea35428, type: 3}
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   mainCamera: {fileID: 963194227}
+  blueprintSystem: {fileID: 0}
+  inventory: {fileID: 0}
+  buildingMode: 0
+  collectSystem: {fileID: 0}
+  collectMode: 0
+  monsterAmount: 000000000000000000000000
+  spawnCD:
+  - 0
+  - 0
+  - 0
+  Time:
+  - 0
+  - 0
+  - 0
 --- !u!4 &851323185
 Transform:
   m_ObjectHideFlags: 0
@@ -791,6 +822,14 @@ PrefabInstance:
     - target: {fileID: 1462215664362752499, guid: e38a953c73a794bce850e35f3ea35428, type: 3}
       propertyPath: m_Name
       value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140241696602693768, guid: e38a953c73a794bce850e35f3ea35428, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140241696602693768, guid: e38a953c73a794bce850e35f3ea35428, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4025819058907448828, guid: e38a953c73a794bce850e35f3ea35428, type: 3}
       propertyPath: tower

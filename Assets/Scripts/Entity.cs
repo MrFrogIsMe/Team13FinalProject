@@ -8,8 +8,7 @@ public abstract class Entity : MonoBehaviour
     public int attack;
     public float attackCD;
     public float maxSpeed;
-    public float force;
-    public float drag;
+    public float groundDrag;
     protected Rigidbody rb;
 
     public abstract void Move();

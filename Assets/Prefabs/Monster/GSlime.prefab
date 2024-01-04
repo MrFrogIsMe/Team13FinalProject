@@ -51,8 +51,8 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: eb340672e17c0af4089e561b61cdc548, type: 3}
   m_Controller: {fileID: 9100000, guid: 58fb1ef3ea7e8284789abf6570acf341, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
+  m_CullingMode: 1
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -70,7 +70,7 @@ Rigidbody:
   m_GameObject: {fileID: 393554180970727890}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -86,7 +86,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &5634087564899651810
 SphereCollider:
@@ -127,10 +127,12 @@ MonoBehaviour:
   attack: 2
   attackCD: 0.5
   maxSpeed: 5
-  force: 500
-  drag: 0
+  groundDrag: 5
   tower: {fileID: 0}
   player: {fileID: 0}
+  chaseTarget: {fileID: 0}
+  attackTarget: {fileID: 0}
+  isFreezing: 0
   dropExp: 100
 --- !u!1 &763693402878556474
 GameObject:
