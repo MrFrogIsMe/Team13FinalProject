@@ -60,7 +60,7 @@ public class Monster : Entity
     void FixedUpdate()
     {
         if (!isAttacking && !isFreezing)
-            rb.AddForce(transform.forward.normalized * maxSpeed * 5f);
+            rb.AddForce(transform.forward.normalized * maxSpeed * 4.5f);
     }
 
     public override void Move()

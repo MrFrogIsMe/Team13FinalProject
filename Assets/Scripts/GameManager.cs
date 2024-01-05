@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
             20, 40, 40, 40, 40,
             40, 40, 40, 40, 40, 40
         };
-        inventory.setInv(player.resources);
+        // inventory.setInv(player.resources);
         round = 0;
 
         StartCoroutine(RoundManager());
@@ -64,13 +64,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            buildingMode = !buildingMode;
-            //blueprintSystem.ShowHotBar(buildingMode);
-            //AbilitySystem.ShowHotBar(buildingMode);
-            inventory.ShowInv(buildingMode);
-        }
+        // if (Input.GetMouseButtonDown(1))
+        // {
+        //     buildingMode = !buildingMode;
+        //     //blueprintSystem.ShowHotBar(buildingMode);
+        //     //AbilitySystem.ShowHotBar(buildingMode);
+        //     inventory.ShowInv(buildingMode);
+        // }
 
     }
 
