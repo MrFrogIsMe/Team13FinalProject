@@ -7,6 +7,8 @@ public class Player : Entity
     public Dictionary<String, int> resources;
     public GameObject fireballSpawnpoint;
     public FireBall fireballTemplate;
+
+    public AudioClip mySoundClip;
     
     Camera mainCamera;
     Animator anim;
@@ -22,6 +24,7 @@ public class Player : Entity
         resources = new Dictionary<String, int>();
         resources.Add("Tree", 0);
         resources.Add("Stone", 0);
+        
     }
 
     void Update()
@@ -75,6 +78,9 @@ public class Player : Entity
         fireballTemplate.damage = this.attack;
         Instantiate(fireballTemplate);
         anim.SetTrigger("attack");
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = mySoundClip;
+        audioSource.Play();
     }
 
     public override void TakeDamage(int damage)
