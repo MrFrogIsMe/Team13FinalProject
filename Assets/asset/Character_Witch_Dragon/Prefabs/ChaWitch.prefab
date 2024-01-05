@@ -1687,6 +1687,57 @@ Transform:
   - {fileID: 436336}
   m_Father: {fileID: 445232}
   m_LocalEulerAnglesHint: {x: -6.9536576, y: -3.6940695e-17, z: 2.9114756e-16}
+--- !u!1 &721230861486744328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6050888456845735097}
+  - component: {fileID: 993838520947511116}
+  m_Layer: 8
+  m_Name: Dash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6050888456845735097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721230861486744328}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6424607779270086341}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &993838520947511116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721230861486744328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adeabec624b1148688c8d8356408f650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Dash
+  key: 304
+  cooldownTime: 2
+  activeTime: 0.1
+  abilityImage: {fileID: 0}
+  state: 0
+  dashSpeed: 30
 --- !u!1 &1850241631215391354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,6 +1819,7 @@ Transform:
   m_Children:
   - {fileID: 2811611176960968635}
   - {fileID: 1742252376296752603}
+  - {fileID: 6050888456845735097}
   m_Father: {fileID: 487646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2235371746855343494
@@ -1851,9 +1903,9 @@ MonoBehaviour:
   activeTime: 4
   abilityImage: {fileID: 0}
   state: 0
-  attackRadius: 2.5
+  attackRadius: 3.5
   attack: 5
-  attackCount: 2
+  attackCount: 4
   ExplosionPrefab: {fileID: 1892078723244562, guid: 9d277d0d7cd58f34b86ccbddf53d0952, type: 3}
   GroundFirePrefab: {fileID: 1727626132299242, guid: bd61921faae5e0b43a789350e460a99c, type: 3}
 --- !u!1001 &8020182643045646301

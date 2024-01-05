@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class GroundFire : Ability
 {
-    public float attackRadius = 2.5f;
+    public float attackRadius = 3f;
     public int attack = 5;
-    public int attackCount = 2;
+    public int attackCount = 4;
     CapsuleCollider attackCollider;
     float attackTimer = 0;
 
@@ -23,10 +23,12 @@ public class GroundFire : Ability
             
         }
         attackCollider.enabled = true;
+
+        attack = (int)(player.attack * 0.5f);
+
         Quaternion rotation = Quaternion.Euler(-90, 90, 0);
         GroundF = Instantiate(GroundFirePrefab, this.transform.position,rotation);
         GroundF.transform.parent = tf;
-        Debug.Log("GroundFire!");
     }
 
     public override void Deactivate() { 
@@ -52,7 +54,7 @@ public class GroundFire : Ability
             {
                 other.GetComponent<Monster>().TakeDamage(attack);
                 Instantiate(ExplosionPrefab, other.transform.position,this.transform.rotation);
-                attackTimer = activeTime / 4;
+                attackTimer = activeTime / attackCount;
             }
         }
     }
