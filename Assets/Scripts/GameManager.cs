@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnPoints[i].SpawnMonsters(0, 2, 5);
+            spawnPoints[i].SpawnMonsters(0, 3, 5);
         }
     }
 
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             spawnPoints[i].SpawnMonsters(0, 3, 3);
-            spawnPoints[i].SpawnMonsters(1, 1, 1);
+            spawnPoints[i].SpawnMonsters(1, 2, 1);
         }
     }
 
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             spawnPoints[i].SpawnMonsters(0, 5, 1);
-            spawnPoints[i].SpawnMonsters(5, 1, 1);
+            spawnPoints[i].SpawnMonsters(5, 2, 1);
         }
     }
 

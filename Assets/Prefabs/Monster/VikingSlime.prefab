@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 500
+  maxHealth: 700
   healthBar: {fileID: 0}
   attack: 8
   attackCD: 0.5
