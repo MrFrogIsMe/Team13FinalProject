@@ -17,7 +17,8 @@ public class Freeze : Ability
     {
         foreach (GameObject monster in monsters)
         {
-            monster.GetComponent<Monster>().isFreezing = false;
+            if (monster != null)
+                monster.GetComponent<Monster>().isFreezing = false;
         }
     }
 

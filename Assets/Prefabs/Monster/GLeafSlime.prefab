@@ -1198,7 +1198,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   attack: 5
   attackCD: 0.5
-  maxSpeed: 5
+  maxSpeed: 6
   groundDrag: 5
   tower: {fileID: 0}
   player: {fileID: 0}
