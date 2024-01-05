@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Player : Entity
@@ -107,6 +108,7 @@ public class Player : Entity
     {
         // game over
         Debug.Log("GameOver : Player Died");
+        SceneManager.LoadScene("Over");
     }
 
     /* Experience System */
