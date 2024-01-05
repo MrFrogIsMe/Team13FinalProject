@@ -16,6 +16,8 @@ public class ExperienceSystem : MonoBehaviour
 
     public GameObject player;
 
+    public AudioClip mySoundClip;
+
     // Singleton
     void Awake()
     {
@@ -40,6 +42,9 @@ public class ExperienceSystem : MonoBehaviour
         {
             exp -= nextLevelExp;
             ++level;
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.clip = mySoundClip;
+            audioSource.Play();
             Instantiate(LevelUP, player.transform.position,this.transform.rotation);
             nextLevelExp = (int)(nextLevelExp * 1.2f);
             OnLevelChange?.Invoke();

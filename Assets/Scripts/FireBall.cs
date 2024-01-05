@@ -6,6 +6,8 @@ public class FireBall : MonoBehaviour
     float speed = 50f;
     Vector3 movement;
 
+    public AudioClip mySoundClip;
+
 
 
     public GameObject ExplosionPrefab;
@@ -30,6 +32,9 @@ public class FireBall : MonoBehaviour
     {
         Destroy(this.gameObject);
         Instantiate(ExplosionPrefab, this.transform.position, this.transform.rotation);
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = mySoundClip;
+        audioSource.Play();
 
         // print($"hit: {other.tag}");
         if (other.CompareTag("Monster"))

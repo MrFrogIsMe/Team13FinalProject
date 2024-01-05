@@ -13,6 +13,8 @@ public class GroundFire : Ability
 
     private GameObject GroundF;
 
+    public AudioClip mySoundClip;
+
     public override void Activate()
     {
         if (attackCollider == null)
@@ -20,6 +22,7 @@ public class GroundFire : Ability
             attackCollider = this.gameObject.AddComponent<CapsuleCollider>();
             attackCollider.isTrigger = true;
             attackCollider.radius = attackRadius;
+            
             
         }
         attackCollider.enabled = true;
@@ -29,6 +32,9 @@ public class GroundFire : Ability
         Quaternion rotation = Quaternion.Euler(-90, 90, 0);
         GroundF = Instantiate(GroundFirePrefab, this.transform.position,rotation);
         GroundF.transform.parent = tf;
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = mySoundClip;
+        audioSource.Play();
     }
 
     public override void Deactivate() { 
